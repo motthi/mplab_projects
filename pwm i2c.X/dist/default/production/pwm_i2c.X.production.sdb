@@ -1,0 +1,130 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1827 ]
+[d frameptr 6 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\pic\eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
+"33 C:\Users\k1100\MPLABXProjects\pwm i2c.X\pwm i2c.c
+[v _intr intr `II(v  1 e 1 0 ]
+"54
+[v _InitI2C_Slave InitI2C_Slave `(v  1 e 1 0 ]
+"67
+[v _main main `(i  1 e 2 0 ]
+"349 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f1827.h
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"427
+[v _PORTA PORTA `VEuc  1 e 1 @12 ]
+"489
+[v _PORTB PORTB `VEuc  1 e 1 @13 ]
+"939
+[v _TMR2 TMR2 `VEuc  1 e 1 @26 ]
+"959
+[v _PR2 PR2 `VEuc  1 e 1 @27 ]
+[s S87 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 T2OUTPS0 1 0 :1:3 
+`uc 1 T2OUTPS1 1 0 :1:4 
+`uc 1 T2OUTPS2 1 0 :1:5 
+`uc 1 T2OUTPS3 1 0 :1:6 
+]
+"1000
+[s S95 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 T2OUTPS 1 0 :4:3 
+]
+[u S99 . 1 `S87 1 . 1 0 `S95 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES99  1 e 1 @28 ]
+"1150
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1212
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1274
+[v _PIE1 PIE1 `VEuc  1 e 1 @145 ]
+"1704
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"2859
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"2911
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"3584
+[v _SSP1BUF SSP1BUF `VEuc  1 e 1 @529 ]
+"3622
+[v _SSP1ADD SSP1ADD `VEuc  1 e 1 @530 ]
+"3698
+[v _SSP1STAT SSP1STAT `VEuc  1 e 1 @532 ]
+[s S20 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+"3720
+[u S29 . 1 `S20 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES29  1 e 1 @532 ]
+"3820
+[v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @533 ]
+[s S42 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"3849
+[s S51 . 1 `uc 1 SSPM 1 0 :4:0 
+]
+[u S53 . 1 `S42 1 . 1 0 `S51 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES53  1 e 1 @533 ]
+"4024
+[v _SSP1CON2 SSP1CON2 `VEuc  1 e 1 @534 ]
+"4146
+[v _SSP1CON3 SSP1CON3 `VEuc  1 e 1 @535 ]
+"5394
+[v _CCPTMRS CCPTMRS `VEuc  1 e 1 @670 ]
+"5575
+[v _CCPR3L CCPR3L `VEuc  1 e 1 @785 ]
+"5615
+[v _CCP3CON CCP3CON `VEuc  1 e 1 @787 ]
+"5686
+[v _CCPR4L CCPR4L `VEuc  1 e 1 @792 ]
+"5726
+[v _CCP4CON CCP4CON `VEuc  1 e 1 @794 ]
+"7455
+[v _SSP1IF SSP1IF `VEb  1 e 0 @139 ]
+"28 C:\Users\k1100\MPLABXProjects\pwm i2c.X\pwm i2c.c
+[v _data_flag data_flag `uc  1 e 1 0 ]
+"29
+[v _buf buf `uc  1 e 1 0 ]
+"31
+[v _data data `VE[3]uc  1 e 3 0 ]
+"67
+[v _main main `(i  1 e 2 0 ]
+{
+"109
+} 0
+"54
+[v _InitI2C_Slave InitI2C_Slave `(v  1 e 1 0 ]
+{
+[v InitI2C_Slave@address address `i  1 p 2 2 ]
+"65
+} 0
+"33
+[v _intr intr `II(v  1 e 1 0 ]
+{
+"34
+[v intr@cnt cnt `i  1 s 2 cnt ]
+"52
+} 0

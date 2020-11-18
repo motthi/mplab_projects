@@ -1,0 +1,80 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1827 ]
+[d frameptr 6 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\pic\eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
+"36 C:\Users\k1100\MPLABXProjects\pwm test.X\pwm.c
+[v _main main `(v  1 e 1 0 ]
+"427 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f1827.h
+[v _PORTA PORTA `VEuc  1 e 1 @12 ]
+"489
+[v _PORTB PORTB `VEuc  1 e 1 @13 ]
+"1150
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1212
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1704
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"1845
+[v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
+"1865
+[v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
+"2859
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"2911
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"4591
+[v _CCPR1L CCPR1L `VEuc  1 e 1 @657 ]
+"4611
+[v _CCPR1H CCPR1H `VEuc  1 e 1 @658 ]
+"4631
+[v _CCP1CON CCP1CON `VEuc  1 e 1 @659 ]
+"4945
+[v _PSTR1CON PSTR1CON `VEuc  1 e 1 @662 ]
+"4996
+[v _CCPR2L CCPR2L `VEuc  1 e 1 @664 ]
+"5016
+[v _CCPR2H CCPR2H `VEuc  1 e 1 @665 ]
+"5036
+[v _CCP2CON CCP2CON `VEuc  1 e 1 @666 ]
+"5350
+[v _PSTR2CON PSTR2CON `VEuc  1 e 1 @669 ]
+"5394
+[v _CCPTMRS CCPTMRS `VEuc  1 e 1 @670 ]
+"5575
+[v _CCPR3L CCPR3L `VEuc  1 e 1 @785 ]
+"5615
+[v _CCP3CON CCP3CON `VEuc  1 e 1 @787 ]
+"5686
+[v _CCPR4L CCPR4L `VEuc  1 e 1 @792 ]
+"5726
+[v _CCP4CON CCP4CON `VEuc  1 e 1 @794 ]
+"6310
+[v _TMR4 TMR4 `VEuc  1 e 1 @1045 ]
+"6330
+[v _PR4 PR4 `VEuc  1 e 1 @1046 ]
+"6350
+[v _T4CON T4CON `VEuc  1 e 1 @1047 ]
+"6947
+[v _CCP1SEL CCP1SEL `VEb  1 e 0 @2280 ]
+"6969
+[v _CCP2SEL CCP2SEL `VEb  1 e 0 @2283 ]
+"7109
+[v _GO_nDONE GO_nDONE `VEb  1 e 0 @1257 ]
+"7591
+[v _TMR4ON TMR4ON `VEb  1 e 0 @8378 ]
+"36 C:\Users\k1100\MPLABXProjects\pwm test.X\pwm.c
+[v _main main `(v  1 e 1 0 ]
+{
+"38
+[v main@i i `ui  1 a 2 1 ]
+"85
+} 0

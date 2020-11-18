@@ -1,0 +1,2267 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V1.45 build -152302408 
+                                                                                               Mon Dec 17 22:48:39 2018
+
+Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
+     1                           	processor	16F1827
+     2                           	opt	pw 120
+     3                           	opt	lm
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+     7                           	psect	clrtext,global,class=CODE,delta=2
+     8                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     9                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+    10                           	psect	maintext,global,class=CODE,merge=1,split=1,delta=2
+    11                           	psect	text1,local,class=CODE,merge=1,delta=2
+    12                           	psect	text2,local,class=CODE,merge=1,delta=2,group=2
+    13                           	psect	text3,local,class=CODE,merge=1,delta=2,group=2
+    14                           	psect	text4,local,class=CODE,merge=1,delta=2,group=2
+    15                           	psect	text5,local,class=CODE,merge=1,delta=2,group=2
+    16                           	psect	text6,local,class=CODE,merge=1,delta=2,group=2
+    17                           	psect	text7,local,class=CODE,merge=1,delta=2
+    18                           	psect	text8,local,class=CODE,merge=1,delta=2
+    19                           	psect	intentry,global,class=CODE,delta=2
+    20                           	dabs	1,0x7E,2
+    21  0000                     
+    22                           ; Version 1.45
+    23                           ; Generated 16/11/2017 GMT
+    24                           ; 
+    25                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    26                           ; All rights reserved.
+    27                           ; 
+    28                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    29                           ; 
+    30                           ; Redistribution and use in source and binary forms, with or without modification, are
+    31                           ; permitted provided that the following conditions are met:
+    32                           ; 
+    33                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    34                           ;        conditions and the following disclaimer.
+    35                           ; 
+    36                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    37                           ;        of conditions and the following disclaimer in the documentation and/or other
+    38                           ;        materials provided with the distribution.
+    39                           ; 
+    40                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    41                           ;        software without specific prior written permission.
+    42                           ; 
+    43                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    44                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    45                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    46                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    47                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    48                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    49                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    50                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    51                           ; 
+    52                           ; 
+    53                           ; Code-generator required, PIC16F1827 Definitions
+    54                           ; 
+    55                           ; SFR Addresses
+    56  0000                     	;# 
+    57  0001                     	;# 
+    58  0002                     	;# 
+    59  0003                     	;# 
+    60  0004                     	;# 
+    61  0005                     	;# 
+    62  0006                     	;# 
+    63  0007                     	;# 
+    64  0008                     	;# 
+    65  0009                     	;# 
+    66  000A                     	;# 
+    67  000B                     	;# 
+    68  000C                     	;# 
+    69  000D                     	;# 
+    70  0011                     	;# 
+    71  0012                     	;# 
+    72  0013                     	;# 
+    73  0014                     	;# 
+    74  0015                     	;# 
+    75  0016                     	;# 
+    76  0016                     	;# 
+    77  0017                     	;# 
+    78  0018                     	;# 
+    79  0019                     	;# 
+    80  001A                     	;# 
+    81  001B                     	;# 
+    82  001C                     	;# 
+    83  001E                     	;# 
+    84  001F                     	;# 
+    85  008C                     	;# 
+    86  008D                     	;# 
+    87  0091                     	;# 
+    88  0092                     	;# 
+    89  0093                     	;# 
+    90  0094                     	;# 
+    91  0095                     	;# 
+    92  0096                     	;# 
+    93  0097                     	;# 
+    94  0098                     	;# 
+    95  0099                     	;# 
+    96  009A                     	;# 
+    97  009B                     	;# 
+    98  009B                     	;# 
+    99  009C                     	;# 
+   100  009D                     	;# 
+   101  009E                     	;# 
+   102  010C                     	;# 
+   103  010D                     	;# 
+   104  0111                     	;# 
+   105  0112                     	;# 
+   106  0113                     	;# 
+   107  0114                     	;# 
+   108  0115                     	;# 
+   109  0116                     	;# 
+   110  0117                     	;# 
+   111  0118                     	;# 
+   112  0119                     	;# 
+   113  011A                     	;# 
+   114  011B                     	;# 
+   115  011D                     	;# 
+   116  011E                     	;# 
+   117  018C                     	;# 
+   118  018D                     	;# 
+   119  0191                     	;# 
+   120  0191                     	;# 
+   121  0192                     	;# 
+   122  0193                     	;# 
+   123  0193                     	;# 
+   124  0193                     	;# 
+   125  0194                     	;# 
+   126  0195                     	;# 
+   127  0196                     	;# 
+   128  0199                     	;# 
+   129  019A                     	;# 
+   130  019B                     	;# 
+   131  019B                     	;# 
+   132  019B                     	;# 
+   133  019B                     	;# 
+   134  019C                     	;# 
+   135  019C                     	;# 
+   136  019D                     	;# 
+   137  019E                     	;# 
+   138  019F                     	;# 
+   139  020C                     	;# 
+   140  020D                     	;# 
+   141  0211                     	;# 
+   142  0211                     	;# 
+   143  0212                     	;# 
+   144  0212                     	;# 
+   145  0213                     	;# 
+   146  0213                     	;# 
+   147  0214                     	;# 
+   148  0214                     	;# 
+   149  0215                     	;# 
+   150  0215                     	;# 
+   151  0215                     	;# 
+   152  0216                     	;# 
+   153  0216                     	;# 
+   154  0217                     	;# 
+   155  0217                     	;# 
+   156  0219                     	;# 
+   157  021A                     	;# 
+   158  021B                     	;# 
+   159  021C                     	;# 
+   160  021D                     	;# 
+   161  021E                     	;# 
+   162  021F                     	;# 
+   163  0291                     	;# 
+   164  0291                     	;# 
+   165  0292                     	;# 
+   166  0293                     	;# 
+   167  0294                     	;# 
+   168  0295                     	;# 
+   169  0295                     	;# 
+   170  0296                     	;# 
+   171  0298                     	;# 
+   172  0298                     	;# 
+   173  0299                     	;# 
+   174  029A                     	;# 
+   175  029B                     	;# 
+   176  029C                     	;# 
+   177  029C                     	;# 
+   178  029D                     	;# 
+   179  029E                     	;# 
+   180  029E                     	;# 
+   181  0311                     	;# 
+   182  0311                     	;# 
+   183  0312                     	;# 
+   184  0313                     	;# 
+   185  0318                     	;# 
+   186  0318                     	;# 
+   187  0319                     	;# 
+   188  031A                     	;# 
+   189  0394                     	;# 
+   190  0395                     	;# 
+   191  0396                     	;# 
+   192  039A                     	;# 
+   193  039C                     	;# 
+   194  039D                     	;# 
+   195  039E                     	;# 
+   196  039F                     	;# 
+   197  0415                     	;# 
+   198  0416                     	;# 
+   199  0417                     	;# 
+   200  041C                     	;# 
+   201  041D                     	;# 
+   202  041E                     	;# 
+   203  0FE4                     	;# 
+   204  0FE5                     	;# 
+   205  0FE6                     	;# 
+   206  0FE7                     	;# 
+   207  0FE8                     	;# 
+   208  0FE9                     	;# 
+   209  0FEA                     	;# 
+   210  0FEB                     	;# 
+   211  0FED                     	;# 
+   212  0FEE                     	;# 
+   213  0FEF                     	;# 
+   214  000D                     _PORTB	set	13
+   215  000C                     _PORTA	set	12
+   216  0093                     _BCL1IF	set	147
+   217  008B                     _SSP1IF	set	139
+   218  005F                     _GIE	set	95
+   219  005E                     _PEIE	set	94
+   220  006B                     _RB3	set	107
+   221  006A                     _RB2	set	106
+   222  009B                     _ADRESL	set	155
+   223  009C                     _ADRESH	set	156
+   224  009E                     _ADCON1	set	158
+   225  009D                     _ADCON0	set	157
+   226  008D                     _TRISB	set	141
+   227  008C                     _TRISA	set	140
+   228  0099                     _OSCCON	set	153
+   229  04E9                     _GO_nDONE	set	1257
+   230  0493                     _BCL1IE	set	1171
+   231  048B                     _SSP1IE	set	1163
+   232  018D                     _ANSELB	set	397
+   233  018C                     _ANSELA	set	396
+   234  0215                     _SSP1CON1bits	set	533
+   235  0211                     _SSP1BUF	set	529
+   236  0214                     _SSP1STATbits	set	532
+   237  0213                     _SSP1MSK	set	531
+   238  0212                     _SSP1ADD	set	530
+   239  0216                     _SSP1CON2bits	set	534
+   240  0215                     _SSP1CON1	set	533
+   241  0214                     _SSP1STAT	set	532
+   242                           
+   243                           ; #config settings
+   244  0000                     
+   245                           	psect	cinit
+   246  0064                     start_initialization:	
+   247  0064                     __initialization:	
+   248                           
+   249                           ; Clear objects allocated to COMMON
+   250  0064  01F9               	clrf	__pbssCOMMON& (0+127)
+   251  0065  01FA               	clrf	(__pbssCOMMON+1)& (0+127)
+   252                           
+   253                           ; Clear objects allocated to BANK0
+   254  0066  3049               	movlw	low __pbssBANK0
+   255  0067  0084               	movwf	4
+   256  0068  3000               	movlw	high __pbssBANK0
+   257  0069  0085               	movwf	5
+   258  006A  3012               	movlw	18
+   259  006B  3183  2340         	fcall	clear_ram0
+   260  006D                     end_of_initialization:	
+   261                           ;End of C runtime variable initialization code
+   262                           
+   263  006D                     __end_of__initialization:	
+   264  006D  107E               	bcf	int$flags,0	;clear compiler interrupt flag (level 1)
+   265  006E  0020               	movlb	0
+   266  006F  3180  2871         	ljmp	_main	;jump to C main() function
+   267                           
+   268                           	psect	bssCOMMON
+   269  0079                     __pbssCOMMON:	
+   270  0079                     _Rdtp:	
+   271  0079                     	ds	1
+   272  007A                     _Sdtp:	
+   273  007A                     	ds	1
+   274                           
+   275                           	psect	bssBANK0
+   276  0049                     __pbssBANK0:	
+   277  0049                     _rcv_flg:	
+   278  0049                     	ds	2
+   279  004B                     _snd_data:	
+   280  004B                     	ds	8
+   281  0053                     _rcv_data:	
+   282  0053                     	ds	8
+   283                           
+   284                           	psect	clrtext
+   285  0340                     clear_ram0:	
+   286                           ;	Called with FSR0 containing the base address, and
+   287                           ;	WREG with the size to clear
+   288                           
+   289  0340  0064               	clrwdt	;clear the watchdog before getting into this loop
+   290  0341                     clrloop0:	
+   291  0341  0180               	clrf	0	;clear RAM location pointed to by FSR
+   292  0342  3101               	addfsr 0,1
+   293  0343  0B89               	decfsz	9,f	;Have we reached the end of clearing yet?
+   294  0344  2B41               	goto	clrloop0	;have we reached the end yet?
+   295  0345  3400               	retlw	0	;all done for this memory range, return
+   296                           
+   297                           	psect	cstackCOMMON
+   298  0070                     __pcstackCOMMON:	
+   299  0070                     ?_InterI2C:	
+   300  0070                     ??_InterI2C:	
+   301                           ; 1 bytes @ 0x0
+   302                           
+   303                           
+   304                           ; 1 bytes @ 0x0
+   305  0070                     	ds	2
+   306  0072                     InterI2C@x:	
+   307                           
+   308                           ; 1 bytes @ 0x2
+   309  0072                     	ds	1
+   310  0073                     ?_InitI2C_Slave:	
+   311  0073                     ?___bmul:	
+   312                           ; 1 bytes @ 0x3
+   313                           
+   314  0073                     ?_I2C_ReceiveCheck:	
+   315                           ; 1 bytes @ 0x3
+   316                           
+   317  0073                     ?_adconv:	
+   318                           ; 2 bytes @ 0x3
+   319                           
+   320  0073                     ?___ftpack:	
+   321                           ; 2 bytes @ 0x3
+   322                           
+   323  0073                     ?___fttol:	
+   324                           ; 3 bytes @ 0x3
+   325                           
+   326  0073                     ___bmul@multiplicand:	
+   327                           ; 4 bytes @ 0x3
+   328                           
+   329  0073                     InitI2C_Slave@address:	
+   330                           ; 1 bytes @ 0x3
+   331                           
+   332  0073                     adconv@i:	
+   333                           ; 2 bytes @ 0x3
+   334                           
+   335  0073                     ___ftpack@arg:	
+   336                           ; 2 bytes @ 0x3
+   337                           
+   338  0073                     ___fttol@f1:	
+   339                           ; 3 bytes @ 0x3
+   340                           
+   341                           
+   342                           ; 3 bytes @ 0x3
+   343  0073                     	ds	1
+   344  0074                     ??___bmul:	
+   345                           
+   346                           ; 1 bytes @ 0x4
+   347  0074                     	ds	1
+   348  0075                     ??_InitI2C_Slave:	
+   349  0075                     ??_I2C_ReceiveCheck:	
+   350                           ; 1 bytes @ 0x5
+   351                           
+   352  0075                     ___bmul@product:	
+   353                           ; 1 bytes @ 0x5
+   354                           
+   355  0075                     I2C_ReceiveCheck@ans:	
+   356                           ; 1 bytes @ 0x5
+   357                           
+   358  0075                     adconv@temp:	
+   359                           ; 2 bytes @ 0x5
+   360                           
+   361                           
+   362                           ; 2 bytes @ 0x5
+   363  0075                     	ds	1
+   364  0076                     ___bmul@multiplier:	
+   365  0076                     ___ftpack@exp:	
+   366                           ; 1 bytes @ 0x6
+   367                           
+   368                           
+   369                           ; 1 bytes @ 0x6
+   370  0076                     	ds	1
+   371  0077                     ___ftpack@sign:	
+   372                           
+   373                           ; 1 bytes @ 0x7
+   374  0077                     	ds	1
+   375  0078                     ??___lwtoft:	
+   376                           
+   377                           ; 1 bytes @ 0x8
+   378  0078                     	ds	1
+   379                           
+   380                           	psect	cstackBANK0
+   381  0020                     __pcstackBANK0:	
+   382  0020                     ??_adconv:	
+   383  0020                     ??___ftpack:	
+   384                           ; 1 bytes @ 0x0
+   385                           
+   386  0020                     ??___fttol:	
+   387                           ; 1 bytes @ 0x0
+   388                           
+   389                           
+   390                           ; 1 bytes @ 0x0
+   391  0020                     	ds	4
+   392  0024                     ___fttol@sign1:	
+   393                           
+   394                           ; 1 bytes @ 0x4
+   395  0024                     	ds	1
+   396  0025                     ___fttol@lval:	
+   397                           
+   398                           ; 4 bytes @ 0x5
+   399  0025                     	ds	1
+   400  0026                     ?___lwtoft:	
+   401  0026                     ___lwtoft@c:	
+   402                           ; 3 bytes @ 0x6
+   403                           
+   404                           
+   405                           ; 2 bytes @ 0x6
+   406  0026                     	ds	3
+   407  0029                     ?___ftdiv:	
+   408  0029                     ___fttol@exp1:	
+   409                           ; 3 bytes @ 0x9
+   410                           
+   411  0029                     ___ftdiv@f2:	
+   412                           ; 1 bytes @ 0x9
+   413                           
+   414                           
+   415                           ; 3 bytes @ 0x9
+   416  0029                     	ds	3
+   417  002C                     ___ftdiv@f1:	
+   418                           
+   419                           ; 3 bytes @ 0xC
+   420  002C                     	ds	3
+   421  002F                     ??___ftdiv:	
+   422                           
+   423                           ; 1 bytes @ 0xF
+   424  002F                     	ds	4
+   425  0033                     ___ftdiv@cntr:	
+   426                           
+   427                           ; 1 bytes @ 0x13
+   428  0033                     	ds	1
+   429  0034                     ___ftdiv@f3:	
+   430                           
+   431                           ; 3 bytes @ 0x14
+   432  0034                     	ds	3
+   433  0037                     ___ftdiv@exp:	
+   434                           
+   435                           ; 1 bytes @ 0x17
+   436  0037                     	ds	1
+   437  0038                     ___ftdiv@sign:	
+   438                           
+   439                           ; 1 bytes @ 0x18
+   440  0038                     	ds	1
+   441  0039                     ?_main:	
+   442  0039                     main@argc:	
+   443                           ; 2 bytes @ 0x19
+   444                           
+   445                           
+   446                           ; 2 bytes @ 0x19
+   447  0039                     	ds	2
+   448  003B                     main@argv:	
+   449                           
+   450                           ; 2 bytes @ 0x1B
+   451  003B                     	ds	2
+   452  003D                     ??_main:	
+   453                           
+   454                           ; 1 bytes @ 0x1D
+   455  003D                     	ds	3
+   456  0040                     main@analog:	
+   457                           
+   458                           ; 3 bytes @ 0x20
+   459  0040                     	ds	3
+   460  0043                     main@ans:	
+   461                           
+   462                           ; 2 bytes @ 0x23
+   463  0043                     	ds	2
+   464  0045                     main@porta:	
+   465                           
+   466                           ; 2 bytes @ 0x25
+   467  0045                     	ds	2
+   468  0047                     main@portb:	
+   469                           
+   470                           ; 2 bytes @ 0x27
+   471  0047                     	ds	2
+   472                           
+   473                           	psect	maintext
+   474  0071                     __pmaintext:	
+   475 ;;
+   476 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
+   477 ;;
+   478 ;; *************** function _main *****************
+   479 ;; Defined at:
+   480 ;;		line 62 in file "SpaceBallon_i2c_arduino.c"
+   481 ;; Parameters:    Size  Location     Type
+   482 ;;  argc            2   25[BANK0 ] int 
+   483 ;;  argv            2   27[BANK0 ] PTR PTR unsigned char 
+   484 ;; Auto vars:     Size  Location     Type
+   485 ;;  analog          3   32[BANK0 ] float 
+   486 ;;  portb           2   39[BANK0 ] int 
+   487 ;;  porta           2   37[BANK0 ] int 
+   488 ;;  ans             2   35[BANK0 ] int 
+   489 ;; Return value:  Size  Location     Type
+   490 ;;                  2   25[BANK0 ] int 
+   491 ;; Registers used:
+   492 ;;		wreg, status,2, status,0, pclath, cstack
+   493 ;; Tracked objects:
+   494 ;;		On entry : B1F/0
+   495 ;;		On exit  : 0/0
+   496 ;;		Unchanged: 0/0
+   497 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4
+   498 ;;      Params:         0       4       0       0       0       0
+   499 ;;      Locals:         0       9       0       0       0       0
+   500 ;;      Temps:          0       3       0       0       0       0
+   501 ;;      Totals:         0      16       0       0       0       0
+   502 ;;Total ram usage:       16 bytes
+   503 ;; Hardware stack levels required when called:    3
+   504 ;; This function calls:
+   505 ;;		_I2C_ReceiveCheck
+   506 ;;		_InitI2C_Slave
+   507 ;;		___bmul
+   508 ;;		___ftdiv
+   509 ;;		___fttol
+   510 ;;		___lwtoft
+   511 ;;		_adconv
+   512 ;; This function is called by:
+   513 ;;		Startup code after reset
+   514 ;; This function uses a non-reentrant model
+   515 ;;
+   516                           
+   517                           
+   518                           ;psect for function _main
+   519  0071                     _main:	
+   520                           
+   521                           ;SpaceBallon_i2c_arduino.c: 63: OSCCON = 0b01110010 ;
+   522                           
+   523                           ;incstack = 0
+   524                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   525  0071  3072               	movlw	114
+   526  0072  0021               	movlb	1	; select bank1
+   527  0073  0099               	movwf	25	;volatile
+   528                           
+   529                           ;SpaceBallon_i2c_arduino.c: 64: ANSELA = 0b00001000 ;
+   530  0074  3008               	movlw	8
+   531  0075  0023               	movlb	3	; select bank3
+   532  0076  008C               	movwf	12	;volatile
+   533                           
+   534                           ;SpaceBallon_i2c_arduino.c: 65: ANSELB = 0b01100000 ;
+   535  0077  3060               	movlw	96
+   536  0078  008D               	movwf	13	;volatile
+   537                           
+   538                           ;SpaceBallon_i2c_arduino.c: 66: TRISA = 0b00001000 ;
+   539  0079  3008               	movlw	8
+   540  007A  0021               	movlb	1	; select bank1
+   541  007B  008C               	movwf	12	;volatile
+   542                           
+   543                           ;SpaceBallon_i2c_arduino.c: 67: TRISB = 0b00010010 ;
+   544  007C  3012               	movlw	18
+   545  007D  008D               	movwf	13	;volatile
+   546                           
+   547                           ;SpaceBallon_i2c_arduino.c: 68: PORTA = 0b00000000 ;
+   548  007E  0020               	movlb	0	; select bank0
+   549  007F  018C               	clrf	12	;volatile
+   550                           
+   551                           ;SpaceBallon_i2c_arduino.c: 69: PORTB = 0b00000000 ;
+   552  0080  018D               	clrf	13	;volatile
+   553                           
+   554                           ;SpaceBallon_i2c_arduino.c: 70: ADCON0 = 0b00000001 ;
+   555  0081  3001               	movlw	1
+   556  0082  0021               	movlb	1	; select bank1
+   557  0083  009D               	movwf	29	;volatile
+   558                           
+   559                           ;SpaceBallon_i2c_arduino.c: 71: ADCON1 = 0b10010000 ;
+   560  0084  3090               	movlw	144
+   561  0085  009E               	movwf	30	;volatile
+   562                           
+   563                           ;SpaceBallon_i2c_arduino.c: 73: InitI2C_Slave(7) ;
+   564  0086  3007               	movlw	7
+   565  0087  00F3               	movwf	InitI2C_Slave@address
+   566  0088  3000               	movlw	0
+   567  0089  00F4               	movwf	InitI2C_Slave@address+1
+   568  008A  3183  231A  3180   	fcall	_InitI2C_Slave
+   569                           
+   570                           ;SpaceBallon_i2c_arduino.c: 74: _delay((unsigned long)((2000)*(8000000/4000.0))) ;
+   571  008D  3015               	movlw	21
+   572  008E  0020               	movlb	0	; select bank0
+   573  008F  00BE               	movwf	??_main+1
+   574  0090  304B               	movlw	75
+   575  0091  00BD               	movwf	??_main
+   576  0092  30BE               	movlw	190
+   577  0093                     u1417:	
+   578  0093  0B89               	decfsz	9,f
+   579  0094  2893               	goto	u1417
+   580  0095  0BBD               	decfsz	??_main,f
+   581  0096  2893               	goto	u1417
+   582  0097  0BBE               	decfsz	??_main+1,f
+   583  0098  2893               	goto	u1417
+   584  0099  0000               	nop
+   585                           
+   586                           ;SpaceBallon_i2c_arduino.c: 76: int porta = 0;
+   587  009A  0020               	movlb	0	; select bank0
+   588  009B  01C5               	clrf	main@porta
+   589  009C  01C6               	clrf	main@porta+1
+   590                           
+   591                           ;SpaceBallon_i2c_arduino.c: 77: int portb = 0;
+   592  009D  01C7               	clrf	main@portb
+   593  009E  01C8               	clrf	main@portb+1
+   594  009F                     l79:	
+   595                           ;SpaceBallon_i2c_arduino.c: 78: int ans;
+   596                           ;SpaceBallon_i2c_arduino.c: 79: float analog;
+   597                           ;SpaceBallon_i2c_arduino.c: 81: while(1){
+   598                           
+   599                           
+   600                           ;SpaceBallon_i2c_arduino.c: 82: ans = I2C_ReceiveCheck();
+   601  009F  3182  22EE  3180   	fcall	_I2C_ReceiveCheck
+   602  00A2  0874               	movf	?_I2C_ReceiveCheck+1,w
+   603  00A3  0020               	movlb	0	; select bank0
+   604  00A4  00C4               	movwf	main@ans+1
+   605  00A5  0873               	movf	?_I2C_ReceiveCheck,w
+   606  00A6  00C3               	movwf	main@ans
+   607                           
+   608                           ;SpaceBallon_i2c_arduino.c: 83: if(ans != 0){
+   609  00A7  0843               	movf	main@ans,w
+   610  00A8  0444               	iorwf	main@ans+1,w
+   611  00A9  1903               	btfsc	3,2
+   612  00AA  2916               	goto	l1279
+   613                           
+   614                           ;SpaceBallon_i2c_arduino.c: 84: if(rcv_data[0] == 1){
+   615  00AB  0353               	decf	_rcv_data,w
+   616  00AC  1D03               	btfss	3,2
+   617  00AD  28B6               	goto	l1267
+   618                           
+   619                           ;SpaceBallon_i2c_arduino.c: 85: porta = (int)rcv_data[1];
+   620  00AE  0854               	movf	_rcv_data+1,w
+   621  00AF  00BD               	movwf	??_main
+   622  00B0  01BE               	clrf	??_main+1
+   623  00B1  083D               	movf	??_main,w
+   624  00B2  00C5               	movwf	main@porta
+   625  00B3  083E               	movf	??_main+1,w
+   626  00B4  00C6               	movwf	main@porta+1
+   627                           
+   628                           ;SpaceBallon_i2c_arduino.c: 86: }else if(rcv_data[0] == 2){
+   629  00B5  2916               	goto	l1279
+   630  00B6                     l1267:	
+   631  00B6  3002               	movlw	2
+   632  00B7  0653               	xorwf	_rcv_data,w
+   633  00B8  1D03               	btfss	3,2
+   634  00B9  28C7               	goto	l1271
+   635                           
+   636                           ;SpaceBallon_i2c_arduino.c: 87: portb = (int)rcv_data[1] << 5;
+   637  00BA  0854               	movf	_rcv_data+1,w
+   638  00BB  00BD               	movwf	??_main
+   639  00BC  01BE               	clrf	??_main+1
+   640  00BD  3005               	movlw	5
+   641  00BE                     u1385:	
+   642  00BE  35BD               	lslf	??_main,f
+   643  00BF  0DBE               	rlf	??_main+1,f
+   644  00C0  0B89               	decfsz	9,f
+   645  00C1  28BE               	goto	u1385
+   646  00C2  083D               	movf	??_main,w
+   647  00C3  00C7               	movwf	main@portb
+   648  00C4  083E               	movf	??_main+1,w
+   649  00C5  00C8               	movwf	main@portb+1
+   650                           
+   651                           ;SpaceBallon_i2c_arduino.c: 88: }else if(rcv_data[0] == 3){
+   652  00C6  2916               	goto	l1279
+   653  00C7                     l1271:	
+   654  00C7  3003               	movlw	3
+   655  00C8  0653               	xorwf	_rcv_data,w
+   656  00C9  1D03               	btfss	3,2
+   657  00CA  28FF               	goto	l1275
+   658                           
+   659                           ;SpaceBallon_i2c_arduino.c: 89: analog = (float)adconv(3)/4.0;
+   660  00CB  3000               	movlw	0
+   661  00CC  00A9               	movwf	___ftdiv@f2
+   662  00CD  3080               	movlw	128
+   663  00CE  00AA               	movwf	___ftdiv@f2+1
+   664  00CF  3040               	movlw	64
+   665  00D0  00AB               	movwf	___ftdiv@f2+2
+   666  00D1  3003               	movlw	3
+   667  00D2  00F3               	movwf	adconv@i
+   668  00D3  3000               	movlw	0
+   669  00D4  00F4               	movwf	adconv@i+1
+   670  00D5  3182  22BB  3180   	fcall	_adconv
+   671  00D8  0874               	movf	?_adconv+1,w
+   672  00D9  0020               	movlb	0	; select bank0
+   673  00DA  00A7               	movwf	___lwtoft@c+1
+   674  00DB  0873               	movf	?_adconv,w
+   675  00DC  00A6               	movwf	___lwtoft@c
+   676  00DD  3183  2305  3180   	fcall	___lwtoft
+   677  00E0  0020               	movlb	0	; select bank0
+   678  00E1  0826               	movf	?___lwtoft,w
+   679  00E2  00AC               	movwf	___ftdiv@f1
+   680  00E3  0827               	movf	?___lwtoft+1,w
+   681  00E4  00AD               	movwf	___ftdiv@f1+1
+   682  00E5  0828               	movf	?___lwtoft+2,w
+   683  00E6  00AE               	movwf	___ftdiv@f1+2
+   684  00E7  3181  2124  3180   	fcall	___ftdiv
+   685  00EA  0020               	movlb	0	; select bank0
+   686  00EB  0829               	movf	?___ftdiv,w
+   687  00EC  00C0               	movwf	main@analog
+   688  00ED  082A               	movf	?___ftdiv+1,w
+   689  00EE  00C1               	movwf	main@analog+1
+   690  00EF  082B               	movf	?___ftdiv+2,w
+   691  00F0  00C2               	movwf	main@analog+2
+   692                           
+   693                           ;SpaceBallon_i2c_arduino.c: 90: snd_data[0] = (int)(analog);
+   694  00F1  0840               	movf	main@analog,w
+   695  00F2  00F3               	movwf	___fttol@f1
+   696  00F3  0841               	movf	main@analog+1,w
+   697  00F4  00F4               	movwf	___fttol@f1+1
+   698  00F5  0842               	movf	main@analog+2,w
+   699  00F6  00F5               	movwf	___fttol@f1+2
+   700  00F7  3181  21CD  3180   	fcall	___fttol
+   701  00FA  0873               	movf	?___fttol,w
+   702  00FB  0020               	movlb	0	; select bank0
+   703  00FC  00BD               	movwf	??_main
+   704  00FD  083D               	movf	??_main,w
+   705  00FE  2915               	goto	L1
+   706  00FF                     l1275:	
+   707                           ;SpaceBallon_i2c_arduino.c: 91: }else if(rcv_data[0] == 4){
+   708                           
+   709  00FF  3004               	movlw	4
+   710  0100  0653               	xorwf	_rcv_data,w
+   711  0101  1D03               	btfss	3,2
+   712  0102  2916               	goto	l1279
+   713                           
+   714                           ;SpaceBallon_i2c_arduino.c: 92: snd_data[0] = (int)(RB2 + 10 * RB3);
+   715  0103  300A               	movlw	10
+   716  0104  00BD               	movwf	??_main
+   717  0105  083D               	movf	??_main,w
+   718  0106  00F3               	movwf	___bmul@multiplicand
+   719  0107  3000               	movlw	0
+   720  0108  198D               	btfsc	13,3	;volatile
+   721  0109  3001               	movlw	1
+   722  010A  3183  232F  3180   	fcall	___bmul
+   723  010D  0020               	movlb	0	; select bank0
+   724  010E  00BE               	movwf	??_main+1
+   725  010F  3000               	movlw	0
+   726  0110  190D               	btfsc	13,2	;volatile
+   727  0111  3001               	movlw	1
+   728  0112  073E               	addwf	??_main+1,w
+   729  0113  00BF               	movwf	??_main+2
+   730  0114  083F               	movf	??_main+2,w
+   731  0115                     L1:	
+   732  0115  00CB               	movwf	_snd_data
+   733  0116                     l1279:	
+   734                           
+   735                           ;SpaceBallon_i2c_arduino.c: 93: }
+   736                           ;SpaceBallon_i2c_arduino.c: 94: }
+   737                           ;SpaceBallon_i2c_arduino.c: 95: PORTA = porta;
+   738  0116  0845               	movf	main@porta,w
+   739  0117  008C               	movwf	12	;volatile
+   740                           
+   741                           ;SpaceBallon_i2c_arduino.c: 96: PORTB = portb;
+   742  0118  0847               	movf	main@portb,w
+   743  0119  008D               	movwf	13	;volatile
+   744                           
+   745                           ;SpaceBallon_i2c_arduino.c: 97: _delay((unsigned long)((1)*(8000000/4000.0)));
+   746  011A  3003               	movlw	3
+   747  011B  0020               	movlb	0	; select bank0
+   748  011C  00BD               	movwf	??_main
+   749  011D  3097               	movlw	151
+   750  011E                     u1427:	
+   751  011E  0B89               	decfsz	9,f
+   752  011F  291E               	goto	u1427
+   753  0120  0BBD               	decfsz	??_main,f
+   754  0121  291E               	goto	u1427
+   755  0122  3200               	nop2
+   756  0123  289F               	goto	l79
+   757  0124                     __end_of_main:	
+   758                           
+   759                           	psect	text1
+   760  02BB                     __ptext1:	
+   761 ;; *************** function _adconv *****************
+   762 ;; Defined at:
+   763 ;;		line 172 in file "SpaceBallon_i2c_arduino.c"
+   764 ;; Parameters:    Size  Location     Type
+   765 ;;  i               2    3[COMMON] int 
+   766 ;; Auto vars:     Size  Location     Type
+   767 ;;  temp            2    5[COMMON] unsigned int 
+   768 ;; Return value:  Size  Location     Type
+   769 ;;                  2    3[COMMON] unsigned int 
+   770 ;; Registers used:
+   771 ;;		wreg, status,2, status,0
+   772 ;; Tracked objects:
+   773 ;;		On entry : 0/0
+   774 ;;		On exit  : 0/0
+   775 ;;		Unchanged: 0/0
+   776 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4
+   777 ;;      Params:         2       0       0       0       0       0
+   778 ;;      Locals:         2       0       0       0       0       0
+   779 ;;      Temps:          0       6       0       0       0       0
+   780 ;;      Totals:         4       6       0       0       0       0
+   781 ;;Total ram usage:       10 bytes
+   782 ;; Hardware stack levels used:    1
+   783 ;; Hardware stack levels required when called:    1
+   784 ;; This function calls:
+   785 ;;		Nothing
+   786 ;; This function is called by:
+   787 ;;		_main
+   788 ;; This function uses a non-reentrant model
+   789 ;;
+   790                           
+   791                           
+   792                           ;psect for function _adconv
+   793  02BB                     _adconv:	
+   794                           
+   795                           ;SpaceBallon_i2c_arduino.c: 173: unsigned int temp;
+   796                           ;SpaceBallon_i2c_arduino.c: 174: ADCON0 = 0b00000001 + (i << 2);
+   797                           
+   798                           ;incstack = 0
+   799                           ; Regs used in _adconv: [wreg+status,2+status,0]
+   800  02BB  0873               	movf	adconv@i,w
+   801  02BC  0020               	movlb	0	; select bank0
+   802  02BD  00A0               	movwf	??_adconv
+   803  02BE  3001               	movlw	1
+   804  02BF                     u1155:	
+   805  02BF  35A0               	lslf	??_adconv,f
+   806  02C0  3EFF               	addlw	-1
+   807  02C1  1D03               	skipz
+   808  02C2  2ABF               	goto	u1155
+   809  02C3  3520               	lslf	??_adconv,w
+   810  02C4  3E01               	addlw	1
+   811  02C5  0021               	movlb	1	; select bank1
+   812  02C6  009D               	movwf	29	;volatile
+   813                           
+   814                           ;SpaceBallon_i2c_arduino.c: 175: _delay((unsigned long)((20)*(8000000/4000000.0)));
+   815  02C7  300D               	movlw	13
+   816  02C8                     u1437:	
+   817  02C8  0B89               	decfsz	9,f
+   818  02C9  2AC8               	goto	u1437
+   819  02CA  0000               	nop
+   820                           
+   821                           ;SpaceBallon_i2c_arduino.c: 177: GO_nDONE = 1;
+   822  02CB  0021               	movlb	1	; select bank1
+   823  02CC  149D               	bsf	29,1	;volatile
+   824  02CD                     l122:	
+   825                           ;SpaceBallon_i2c_arduino.c: 178: while(GO_nDONE);
+   826                           
+   827  02CD  189D               	btfsc	29,1	;volatile
+   828  02CE  2ACD               	goto	l122
+   829                           
+   830                           ;SpaceBallon_i2c_arduino.c: 179: temp = ADRESH;
+   831  02CF  081C               	movf	28,w	;volatile
+   832  02D0  0020               	movlb	0	; select bank0
+   833  02D1  00A0               	movwf	??_adconv
+   834  02D2  01A1               	clrf	??_adconv+1
+   835  02D3  0820               	movf	??_adconv,w
+   836  02D4  00F5               	movwf	adconv@temp
+   837  02D5  0821               	movf	??_adconv+1,w
+   838  02D6  00F6               	movwf	adconv@temp+1
+   839                           
+   840                           ;SpaceBallon_i2c_arduino.c: 180: temp = (temp << 8) | ADRESL;
+   841  02D7  0021               	movlb	1	; select bank1
+   842  02D8  081B               	movf	27,w	;volatile
+   843  02D9  0020               	movlb	0	; select bank0
+   844  02DA  00A0               	movwf	??_adconv
+   845  02DB  01A1               	clrf	??_adconv+1
+   846  02DC  0875               	movf	adconv@temp,w
+   847  02DD  00A3               	movwf	??_adconv+3
+   848  02DE  01A2               	clrf	??_adconv+2
+   849  02DF  0820               	movf	??_adconv,w
+   850  02E0  0422               	iorwf	??_adconv+2,w
+   851  02E1  00A4               	movwf	??_adconv+4
+   852  02E2  0821               	movf	??_adconv+1,w
+   853  02E3  0423               	iorwf	??_adconv+3,w
+   854  02E4  00A5               	movwf	??_adconv+5
+   855  02E5  0824               	movf	??_adconv+4,w
+   856  02E6  00F5               	movwf	adconv@temp
+   857  02E7  0825               	movf	??_adconv+5,w
+   858  02E8  00F6               	movwf	adconv@temp+1
+   859                           
+   860                           ;SpaceBallon_i2c_arduino.c: 181: return temp;
+   861  02E9  0876               	movf	adconv@temp+1,w
+   862  02EA  00F4               	movwf	?_adconv+1
+   863  02EB  0875               	movf	adconv@temp,w
+   864  02EC  00F3               	movwf	?_adconv
+   865  02ED  0008               	return
+   866  02EE                     __end_of_adconv:	
+   867                           
+   868                           	psect	text2
+   869  0305                     __ptext2:	
+   870 ;; *************** function ___lwtoft *****************
+   871 ;; Defined at:
+   872 ;;		line 28 in file "C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwtoft.c"
+   873 ;; Parameters:    Size  Location     Type
+   874 ;;  c               2    6[BANK0 ] unsigned int 
+   875 ;; Auto vars:     Size  Location     Type
+   876 ;;		None
+   877 ;; Return value:  Size  Location     Type
+   878 ;;                  3    6[BANK0 ] float 
+   879 ;; Registers used:
+   880 ;;		wreg, status,2, status,0, pclath, cstack
+   881 ;; Tracked objects:
+   882 ;;		On entry : 0/0
+   883 ;;		On exit  : 0/0
+   884 ;;		Unchanged: 0/0
+   885 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4
+   886 ;;      Params:         0       3       0       0       0       0
+   887 ;;      Locals:         0       0       0       0       0       0
+   888 ;;      Temps:          1       0       0       0       0       0
+   889 ;;      Totals:         1       3       0       0       0       0
+   890 ;;Total ram usage:        4 bytes
+   891 ;; Hardware stack levels used:    1
+   892 ;; Hardware stack levels required when called:    2
+   893 ;; This function calls:
+   894 ;;		___ftpack
+   895 ;; This function is called by:
+   896 ;;		_main
+   897 ;; This function uses a non-reentrant model
+   898 ;;
+   899                           
+   900                           
+   901                           ;psect for function ___lwtoft
+   902  0305                     ___lwtoft:	
+   903                           
+   904                           ;incstack = 0
+   905                           ; Regs used in ___lwtoft: [wreg+status,2+status,0+pclath+cstack]
+   906  0305  0020               	movlb	0	; select bank0
+   907  0306  0826               	movf	___lwtoft@c,w
+   908  0307  00F3               	movwf	___ftpack@arg
+   909  0308  0827               	movf	___lwtoft@c+1,w
+   910  0309  00F4               	movwf	___ftpack@arg+1
+   911  030A  01F5               	clrf	___ftpack@arg+2
+   912  030B  308E               	movlw	142
+   913  030C  00F8               	movwf	??___lwtoft
+   914  030D  0878               	movf	??___lwtoft,w
+   915  030E  00F6               	movwf	___ftpack@exp
+   916  030F  01F7               	clrf	___ftpack@sign
+   917  0310  3182  2254         	fcall	___ftpack
+   918  0312  0873               	movf	?___ftpack,w
+   919  0313  0020               	movlb	0	; select bank0
+   920  0314  00A6               	movwf	?___lwtoft
+   921  0315  0874               	movf	?___ftpack+1,w
+   922  0316  00A7               	movwf	?___lwtoft+1
+   923  0317  0875               	movf	?___ftpack+2,w
+   924  0318  00A8               	movwf	?___lwtoft+2
+   925  0319  0008               	return
+   926  031A                     __end_of___lwtoft:	
+   927                           
+   928                           	psect	text3
+   929  01CD                     __ptext3:	
+   930 ;; *************** function ___fttol *****************
+   931 ;; Defined at:
+   932 ;;		line 44 in file "C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\fttol.c"
+   933 ;; Parameters:    Size  Location     Type
+   934 ;;  f1              3    3[COMMON] float 
+   935 ;; Auto vars:     Size  Location     Type
+   936 ;;  lval            4    5[BANK0 ] unsigned long 
+   937 ;;  exp1            1    9[BANK0 ] unsigned char 
+   938 ;;  sign1           1    4[BANK0 ] unsigned char 
+   939 ;; Return value:  Size  Location     Type
+   940 ;;                  4    3[COMMON] long 
+   941 ;; Registers used:
+   942 ;;		wreg, status,2, status,0
+   943 ;; Tracked objects:
+   944 ;;		On entry : 0/0
+   945 ;;		On exit  : 0/0
+   946 ;;		Unchanged: 0/0
+   947 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4
+   948 ;;      Params:         4       0       0       0       0       0
+   949 ;;      Locals:         0       6       0       0       0       0
+   950 ;;      Temps:          0       4       0       0       0       0
+   951 ;;      Totals:         4      10       0       0       0       0
+   952 ;;Total ram usage:       14 bytes
+   953 ;; Hardware stack levels used:    1
+   954 ;; Hardware stack levels required when called:    1
+   955 ;; This function calls:
+   956 ;;		Nothing
+   957 ;; This function is called by:
+   958 ;;		_main
+   959 ;; This function uses a non-reentrant model
+   960 ;;
+   961                           
+   962                           
+   963                           ;psect for function ___fttol
+   964  01CD                     ___fttol:	
+   965                           
+   966                           ;incstack = 0
+   967                           ; Regs used in ___fttol: [wreg+status,2+status,0]
+   968  01CD  0873               	movf	___fttol@f1,w
+   969  01CE  0020               	movlb	0	; select bank0
+   970  01CF  00A0               	movwf	??___fttol
+   971  01D0  0874               	movf	___fttol@f1+1,w
+   972  01D1  00A1               	movwf	??___fttol+1
+   973  01D2  0875               	movf	___fttol@f1+2,w
+   974  01D3  00A2               	movwf	??___fttol+2
+   975  01D4  1003               	clrc
+   976  01D5  0D21               	rlf	??___fttol+1,w
+   977  01D6  0D22               	rlf	??___fttol+2,w
+   978  01D7  00A3               	movwf	??___fttol+3
+   979  01D8  0823               	movf	??___fttol+3,w
+   980  01D9  00A9               	movwf	___fttol@exp1
+   981  01DA  0829               	movf	___fttol@exp1,w
+   982  01DB  1D03               	btfss	3,2
+   983  01DC  29E6               	goto	l1207
+   984  01DD  3000               	movlw	0
+   985  01DE  00F6               	movwf	?___fttol+3
+   986  01DF  3000               	movlw	0
+   987  01E0  00F5               	movwf	?___fttol+2
+   988  01E1  3000               	movlw	0
+   989  01E2  00F4               	movwf	?___fttol+1
+   990  01E3  3000               	movlw	0
+   991  01E4  00F3               	movwf	?___fttol
+   992  01E5  0008               	return
+   993  01E6                     l1207:	
+   994  01E6  0873               	movf	___fttol@f1,w
+   995  01E7  00A0               	movwf	??___fttol
+   996  01E8  0874               	movf	___fttol@f1+1,w
+   997  01E9  00A1               	movwf	??___fttol+1
+   998  01EA  0875               	movf	___fttol@f1+2,w
+   999  01EB  00A2               	movwf	??___fttol+2
+  1000  01EC  3017               	movlw	23
+  1001  01ED                     u1265:	
+  1002  01ED  36A2               	lsrf	??___fttol+2,f
+  1003  01EE  0CA1               	rrf	??___fttol+1,f
+  1004  01EF  0CA0               	rrf	??___fttol,f
+  1005  01F0  0B89               	decfsz	9,f
+  1006  01F1  29ED               	goto	u1265
+  1007  01F2  0820               	movf	??___fttol,w
+  1008  01F3  00A3               	movwf	??___fttol+3
+  1009  01F4  0823               	movf	??___fttol+3,w
+  1010  01F5  00A4               	movwf	___fttol@sign1
+  1011  01F6  17F4               	bsf	___fttol@f1+1,7
+  1012  01F7  30FF               	movlw	255
+  1013  01F8  05F3               	andwf	___fttol@f1,f
+  1014  01F9  30FF               	movlw	255
+  1015  01FA  05F4               	andwf	___fttol@f1+1,f
+  1016  01FB  3000               	movlw	0
+  1017  01FC  05F5               	andwf	___fttol@f1+2,f
+  1018  01FD  0873               	movf	___fttol@f1,w
+  1019  01FE  00A5               	movwf	___fttol@lval
+  1020  01FF  0874               	movf	___fttol@f1+1,w
+  1021  0200  00A6               	movwf	___fttol@lval+1
+  1022  0201  0875               	movf	___fttol@f1+2,w
+  1023  0202  00A7               	movwf	___fttol@lval+2
+  1024  0203  01A8               	clrf	___fttol@lval+3
+  1025  0204  308E               	movlw	142
+  1026  0205  02A9               	subwf	___fttol@exp1,f
+  1027  0206  1FA9               	btfss	___fttol@exp1,7
+  1028  0207  2A24               	goto	l1227
+  1029  0208  0829               	movf	___fttol@exp1,w
+  1030  0209  3A80               	xorlw	128
+  1031  020A  3E8F               	addlw	143
+  1032  020B  1803               	skipnc
+  1033  020C  2A16               	goto	l1225
+  1034  020D  3000               	movlw	0
+  1035  020E  00F6               	movwf	?___fttol+3
+  1036  020F  3000               	movlw	0
+  1037  0210  00F5               	movwf	?___fttol+2
+  1038  0211  3000               	movlw	0
+  1039  0212  00F4               	movwf	?___fttol+1
+  1040  0213  3000               	movlw	0
+  1041  0214  00F3               	movwf	?___fttol
+  1042  0215  0008               	return
+  1043  0216                     l1225:	
+  1044  0216  3001               	movlw	1
+  1045  0217                     u1295:	
+  1046  0217  36A8               	lsrf	___fttol@lval+3,f
+  1047  0218  0CA7               	rrf	___fttol@lval+2,f
+  1048  0219  0CA6               	rrf	___fttol@lval+1,f
+  1049  021A  0CA5               	rrf	___fttol@lval,f
+  1050  021B  0B89               	decfsz	9,f
+  1051  021C  2A17               	goto	u1295
+  1052  021D  3001               	movlw	1
+  1053  021E  00A0               	movwf	??___fttol
+  1054  021F  0820               	movf	??___fttol,w
+  1055  0220  07A9               	addwf	___fttol@exp1,f
+  1056  0221  1903               	btfsc	3,2
+  1057  0222  2A3D               	goto	l1235
+  1058  0223  2A16               	goto	l1225
+  1059  0224                     l1227:	
+  1060  0224  3018               	movlw	24
+  1061  0225  0229               	subwf	___fttol@exp1,w
+  1062  0226  1C03               	skipc
+  1063  0227  2A3A               	goto	l461
+  1064  0228  3000               	movlw	0
+  1065  0229  00F6               	movwf	?___fttol+3
+  1066  022A  3000               	movlw	0
+  1067  022B  00F5               	movwf	?___fttol+2
+  1068  022C  3000               	movlw	0
+  1069  022D  00F4               	movwf	?___fttol+1
+  1070  022E  3000               	movlw	0
+  1071  022F  00F3               	movwf	?___fttol
+  1072  0230  0008               	return
+  1073  0231                     l1233:	
+  1074  0231  3001               	movlw	1
+  1075  0232                     u1325:	
+  1076  0232  35A5               	lslf	___fttol@lval,f
+  1077  0233  0DA6               	rlf	___fttol@lval+1,f
+  1078  0234  0DA7               	rlf	___fttol@lval+2,f
+  1079  0235  0DA8               	rlf	___fttol@lval+3,f
+  1080  0236  0B89               	decfsz	9,f
+  1081  0237  2A32               	goto	u1325
+  1082  0238  3001               	movlw	1
+  1083  0239  02A9               	subwf	___fttol@exp1,f
+  1084  023A                     l461:	
+  1085  023A  0829               	movf	___fttol@exp1,w
+  1086  023B  1D03               	btfss	3,2
+  1087  023C  2A31               	goto	l1233
+  1088  023D                     l1235:	
+  1089  023D  0824               	movf	___fttol@sign1,w
+  1090  023E  1903               	btfsc	3,2
+  1091  023F  2A4B               	goto	l1239
+  1092  0240  09A5               	comf	___fttol@lval,f
+  1093  0241  09A6               	comf	___fttol@lval+1,f
+  1094  0242  09A7               	comf	___fttol@lval+2,f
+  1095  0243  09A8               	comf	___fttol@lval+3,f
+  1096  0244  0AA5               	incf	___fttol@lval,f
+  1097  0245  1903               	skipnz
+  1098  0246  0AA6               	incf	___fttol@lval+1,f
+  1099  0247  1903               	skipnz
+  1100  0248  0AA7               	incf	___fttol@lval+2,f
+  1101  0249  1903               	skipnz
+  1102  024A  0AA8               	incf	___fttol@lval+3,f
+  1103  024B                     l1239:	
+  1104  024B  0828               	movf	___fttol@lval+3,w
+  1105  024C  00F6               	movwf	?___fttol+3
+  1106  024D  0827               	movf	___fttol@lval+2,w
+  1107  024E  00F5               	movwf	?___fttol+2
+  1108  024F  0826               	movf	___fttol@lval+1,w
+  1109  0250  00F4               	movwf	?___fttol+1
+  1110  0251  0825               	movf	___fttol@lval,w
+  1111  0252  00F3               	movwf	?___fttol
+  1112  0253  0008               	return
+  1113  0254                     __end_of___fttol:	
+  1114                           
+  1115                           	psect	text4
+  1116  0124                     __ptext4:	
+  1117 ;; *************** function ___ftdiv *****************
+  1118 ;; Defined at:
+  1119 ;;		line 56 in file "C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftdiv.c"
+  1120 ;; Parameters:    Size  Location     Type
+  1121 ;;  f2              3    9[BANK0 ] float 
+  1122 ;;  f1              3   12[BANK0 ] float 
+  1123 ;; Auto vars:     Size  Location     Type
+  1124 ;;  f3              3   20[BANK0 ] float 
+  1125 ;;  sign            1   24[BANK0 ] unsigned char 
+  1126 ;;  exp             1   23[BANK0 ] unsigned char 
+  1127 ;;  cntr            1   19[BANK0 ] unsigned char 
+  1128 ;; Return value:  Size  Location     Type
+  1129 ;;                  3    9[BANK0 ] float 
+  1130 ;; Registers used:
+  1131 ;;		wreg, status,2, status,0, pclath, cstack
+  1132 ;; Tracked objects:
+  1133 ;;		On entry : 0/0
+  1134 ;;		On exit  : 0/0
+  1135 ;;		Unchanged: 0/0
+  1136 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4
+  1137 ;;      Params:         0       6       0       0       0       0
+  1138 ;;      Locals:         0       6       0       0       0       0
+  1139 ;;      Temps:          0       4       0       0       0       0
+  1140 ;;      Totals:         0      16       0       0       0       0
+  1141 ;;Total ram usage:       16 bytes
+  1142 ;; Hardware stack levels used:    1
+  1143 ;; Hardware stack levels required when called:    2
+  1144 ;; This function calls:
+  1145 ;;		___ftpack
+  1146 ;; This function is called by:
+  1147 ;;		_main
+  1148 ;; This function uses a non-reentrant model
+  1149 ;;
+  1150                           
+  1151                           
+  1152                           ;psect for function ___ftdiv
+  1153  0124                     ___ftdiv:	
+  1154                           
+  1155                           ;incstack = 0
+  1156                           ; Regs used in ___ftdiv: [wreg+status,2+status,0+pclath+cstack]
+  1157  0124  0020               	movlb	0	; select bank0
+  1158  0125  082C               	movf	___ftdiv@f1,w
+  1159  0126  00AF               	movwf	??___ftdiv
+  1160  0127  082D               	movf	___ftdiv@f1+1,w
+  1161  0128  00B0               	movwf	??___ftdiv+1
+  1162  0129  082E               	movf	___ftdiv@f1+2,w
+  1163  012A  00B1               	movwf	??___ftdiv+2
+  1164  012B  1003               	clrc
+  1165  012C  0D30               	rlf	??___ftdiv+1,w
+  1166  012D  0D31               	rlf	??___ftdiv+2,w
+  1167  012E  00B2               	movwf	??___ftdiv+3
+  1168  012F  0832               	movf	??___ftdiv+3,w
+  1169  0130  00B7               	movwf	___ftdiv@exp
+  1170  0131  0837               	movf	___ftdiv@exp,w
+  1171  0132  1D03               	btfss	3,2
+  1172  0133  293B               	goto	l1165
+  1173  0134  3000               	movlw	0
+  1174  0135  00A9               	movwf	?___ftdiv
+  1175  0136  3000               	movlw	0
+  1176  0137  00AA               	movwf	?___ftdiv+1
+  1177  0138  3000               	movlw	0
+  1178  0139  00AB               	movwf	?___ftdiv+2
+  1179  013A  0008               	return
+  1180  013B                     l1165:	
+  1181  013B  0829               	movf	___ftdiv@f2,w
+  1182  013C  00AF               	movwf	??___ftdiv
+  1183  013D  082A               	movf	___ftdiv@f2+1,w
+  1184  013E  00B0               	movwf	??___ftdiv+1
+  1185  013F  082B               	movf	___ftdiv@f2+2,w
+  1186  0140  00B1               	movwf	??___ftdiv+2
+  1187  0141  1003               	clrc
+  1188  0142  0D30               	rlf	??___ftdiv+1,w
+  1189  0143  0D31               	rlf	??___ftdiv+2,w
+  1190  0144  00B2               	movwf	??___ftdiv+3
+  1191  0145  0832               	movf	??___ftdiv+3,w
+  1192  0146  00B8               	movwf	___ftdiv@sign
+  1193  0147  0838               	movf	___ftdiv@sign,w
+  1194  0148  1D03               	btfss	3,2
+  1195  0149  2951               	goto	l1171
+  1196  014A  3000               	movlw	0
+  1197  014B  00A9               	movwf	?___ftdiv
+  1198  014C  3000               	movlw	0
+  1199  014D  00AA               	movwf	?___ftdiv+1
+  1200  014E  3000               	movlw	0
+  1201  014F  00AB               	movwf	?___ftdiv+2
+  1202  0150  0008               	return
+  1203  0151                     l1171:	
+  1204  0151  3000               	movlw	0
+  1205  0152  00B4               	movwf	___ftdiv@f3
+  1206  0153  3000               	movlw	0
+  1207  0154  00B5               	movwf	___ftdiv@f3+1
+  1208  0155  3000               	movlw	0
+  1209  0156  00B6               	movwf	___ftdiv@f3+2
+  1210  0157  3089               	movlw	137
+  1211  0158  0738               	addwf	___ftdiv@sign,w
+  1212  0159  00AF               	movwf	??___ftdiv
+  1213  015A  082F               	movf	??___ftdiv,w
+  1214  015B  02B7               	subwf	___ftdiv@exp,f
+  1215  015C  082C               	movf	___ftdiv@f1,w
+  1216  015D  00AF               	movwf	??___ftdiv
+  1217  015E  082D               	movf	___ftdiv@f1+1,w
+  1218  015F  00B0               	movwf	??___ftdiv+1
+  1219  0160  082E               	movf	___ftdiv@f1+2,w
+  1220  0161  00B1               	movwf	??___ftdiv+2
+  1221  0162  3010               	movlw	16
+  1222  0163                     u1195:	
+  1223  0163  36B1               	lsrf	??___ftdiv+2,f
+  1224  0164  0CB0               	rrf	??___ftdiv+1,f
+  1225  0165  0CAF               	rrf	??___ftdiv,f
+  1226  0166  0B89               	decfsz	9,f
+  1227  0167  2963               	goto	u1195
+  1228  0168  082F               	movf	??___ftdiv,w
+  1229  0169  00B2               	movwf	??___ftdiv+3
+  1230  016A  0832               	movf	??___ftdiv+3,w
+  1231  016B  00B8               	movwf	___ftdiv@sign
+  1232  016C  0829               	movf	___ftdiv@f2,w
+  1233  016D  00AF               	movwf	??___ftdiv
+  1234  016E  082A               	movf	___ftdiv@f2+1,w
+  1235  016F  00B0               	movwf	??___ftdiv+1
+  1236  0170  082B               	movf	___ftdiv@f2+2,w
+  1237  0171  00B1               	movwf	??___ftdiv+2
+  1238  0172  3010               	movlw	16
+  1239  0173                     u1205:	
+  1240  0173  36B1               	lsrf	??___ftdiv+2,f
+  1241  0174  0CB0               	rrf	??___ftdiv+1,f
+  1242  0175  0CAF               	rrf	??___ftdiv,f
+  1243  0176  0B89               	decfsz	9,f
+  1244  0177  2973               	goto	u1205
+  1245  0178  082F               	movf	??___ftdiv,w
+  1246  0179  00B2               	movwf	??___ftdiv+3
+  1247  017A  0832               	movf	??___ftdiv+3,w
+  1248  017B  06B8               	xorwf	___ftdiv@sign,f
+  1249  017C  3080               	movlw	128
+  1250  017D  00AF               	movwf	??___ftdiv
+  1251  017E  082F               	movf	??___ftdiv,w
+  1252  017F  05B8               	andwf	___ftdiv@sign,f
+  1253  0180  17AD               	bsf	___ftdiv@f1+1,7
+  1254  0181  30FF               	movlw	255
+  1255  0182  05AC               	andwf	___ftdiv@f1,f
+  1256  0183  30FF               	movlw	255
+  1257  0184  05AD               	andwf	___ftdiv@f1+1,f
+  1258  0185  3000               	movlw	0
+  1259  0186  05AE               	andwf	___ftdiv@f1+2,f
+  1260  0187  17AA               	bsf	___ftdiv@f2+1,7
+  1261  0188  30FF               	movlw	255
+  1262  0189  05A9               	andwf	___ftdiv@f2,f
+  1263  018A  30FF               	movlw	255
+  1264  018B  05AA               	andwf	___ftdiv@f2+1,f
+  1265  018C  3000               	movlw	0
+  1266  018D  05AB               	andwf	___ftdiv@f2+2,f
+  1267  018E  3018               	movlw	24
+  1268  018F  00AF               	movwf	??___ftdiv
+  1269  0190  082F               	movf	??___ftdiv,w
+  1270  0191  00B3               	movwf	___ftdiv@cntr
+  1271  0192                     l1185:	
+  1272  0192  3001               	movlw	1
+  1273  0193                     u1215:	
+  1274  0193  35B4               	lslf	___ftdiv@f3,f
+  1275  0194  0DB5               	rlf	___ftdiv@f3+1,f
+  1276  0195  0DB6               	rlf	___ftdiv@f3+2,f
+  1277  0196  0B89               	decfsz	9,f
+  1278  0197  2993               	goto	u1215
+  1279  0198  082B               	movf	___ftdiv@f2+2,w
+  1280  0199  022E               	subwf	___ftdiv@f1+2,w
+  1281  019A  1D03               	skipz
+  1282  019B  29A2               	goto	u1225
+  1283  019C  082A               	movf	___ftdiv@f2+1,w
+  1284  019D  022D               	subwf	___ftdiv@f1+1,w
+  1285  019E  1D03               	skipz
+  1286  019F  29A2               	goto	u1225
+  1287  01A0  0829               	movf	___ftdiv@f2,w
+  1288  01A1  022C               	subwf	___ftdiv@f1,w
+  1289  01A2                     u1225:	
+  1290  01A2  1C03               	skipc
+  1291  01A3  29AB               	goto	l1193
+  1292  01A4  0829               	movf	___ftdiv@f2,w
+  1293  01A5  02AC               	subwf	___ftdiv@f1,f
+  1294  01A6  082A               	movf	___ftdiv@f2+1,w
+  1295  01A7  3BAD               	subwfb	___ftdiv@f1+1,f
+  1296  01A8  082B               	movf	___ftdiv@f2+2,w
+  1297  01A9  3BAE               	subwfb	___ftdiv@f1+2,f
+  1298  01AA  1434               	bsf	___ftdiv@f3,0
+  1299  01AB                     l1193:	
+  1300  01AB  3001               	movlw	1
+  1301  01AC                     u1235:	
+  1302  01AC  35AC               	lslf	___ftdiv@f1,f
+  1303  01AD  0DAD               	rlf	___ftdiv@f1+1,f
+  1304  01AE  0DAE               	rlf	___ftdiv@f1+2,f
+  1305  01AF  0B89               	decfsz	9,f
+  1306  01B0  29AC               	goto	u1235
+  1307  01B1  3001               	movlw	1
+  1308  01B2  02B3               	subwf	___ftdiv@cntr,f
+  1309  01B3  1D03               	btfss	3,2
+  1310  01B4  2992               	goto	l1185
+  1311  01B5  0834               	movf	___ftdiv@f3,w
+  1312  01B6  00F3               	movwf	___ftpack@arg
+  1313  01B7  0835               	movf	___ftdiv@f3+1,w
+  1314  01B8  00F4               	movwf	___ftpack@arg+1
+  1315  01B9  0836               	movf	___ftdiv@f3+2,w
+  1316  01BA  00F5               	movwf	___ftpack@arg+2
+  1317  01BB  0837               	movf	___ftdiv@exp,w
+  1318  01BC  00AF               	movwf	??___ftdiv
+  1319  01BD  082F               	movf	??___ftdiv,w
+  1320  01BE  00F6               	movwf	___ftpack@exp
+  1321  01BF  0838               	movf	___ftdiv@sign,w
+  1322  01C0  00B0               	movwf	??___ftdiv+1
+  1323  01C1  0830               	movf	??___ftdiv+1,w
+  1324  01C2  00F7               	movwf	___ftpack@sign
+  1325  01C3  3182  2254         	fcall	___ftpack
+  1326  01C5  0873               	movf	?___ftpack,w
+  1327  01C6  0020               	movlb	0	; select bank0
+  1328  01C7  00A9               	movwf	?___ftdiv
+  1329  01C8  0874               	movf	?___ftpack+1,w
+  1330  01C9  00AA               	movwf	?___ftdiv+1
+  1331  01CA  0875               	movf	?___ftpack+2,w
+  1332  01CB  00AB               	movwf	?___ftdiv+2
+  1333  01CC  0008               	return
+  1334  01CD                     __end_of___ftdiv:	
+  1335                           
+  1336                           	psect	text5
+  1337  0254                     __ptext5:	
+  1338 ;; *************** function ___ftpack *****************
+  1339 ;; Defined at:
+  1340 ;;		line 62 in file "C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c"
+  1341 ;; Parameters:    Size  Location     Type
+  1342 ;;  arg             3    3[COMMON] unsigned um
+  1343 ;;  exp             1    6[COMMON] unsigned char 
+  1344 ;;  sign            1    7[COMMON] unsigned char 
+  1345 ;; Auto vars:     Size  Location     Type
+  1346 ;;		None
+  1347 ;; Return value:  Size  Location     Type
+  1348 ;;                  3    3[COMMON] float 
+  1349 ;; Registers used:
+  1350 ;;		wreg, status,2, status,0
+  1351 ;; Tracked objects:
+  1352 ;;		On entry : 0/0
+  1353 ;;		On exit  : 0/0
+  1354 ;;		Unchanged: 0/0
+  1355 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4
+  1356 ;;      Params:         5       0       0       0       0       0
+  1357 ;;      Locals:         0       0       0       0       0       0
+  1358 ;;      Temps:          0       3       0       0       0       0
+  1359 ;;      Totals:         5       3       0       0       0       0
+  1360 ;;Total ram usage:        8 bytes
+  1361 ;; Hardware stack levels used:    1
+  1362 ;; Hardware stack levels required when called:    1
+  1363 ;; This function calls:
+  1364 ;;		Nothing
+  1365 ;; This function is called by:
+  1366 ;;		___ftdiv
+  1367 ;;		___lwtoft
+  1368 ;; This function uses a non-reentrant model
+  1369 ;;
+  1370                           
+  1371                           
+  1372                           ;psect for function ___ftpack
+  1373  0254                     ___ftpack:	
+  1374                           
+  1375                           ;incstack = 0
+  1376                           ; Regs used in ___ftpack: [wreg+status,2+status,0]
+  1377  0254  0876               	movf	___ftpack@exp,w
+  1378  0255  1903               	btfsc	3,2
+  1379  0256  2A5C               	goto	l1121
+  1380  0257  0875               	movf	___ftpack@arg+2,w
+  1381  0258  0474               	iorwf	___ftpack@arg+1,w
+  1382  0259  0473               	iorwf	___ftpack@arg,w
+  1383  025A  1D03               	skipz
+  1384  025B  2A6E               	goto	l1127
+  1385  025C                     l1121:	
+  1386  025C  3000               	movlw	0
+  1387  025D  00F3               	movwf	?___ftpack
+  1388  025E  3000               	movlw	0
+  1389  025F  00F4               	movwf	?___ftpack+1
+  1390  0260  3000               	movlw	0
+  1391  0261  00F5               	movwf	?___ftpack+2
+  1392  0262  0008               	return
+  1393  0263                     l1125:	
+  1394  0263  3001               	movlw	1
+  1395  0264  0020               	movlb	0	; select bank0
+  1396  0265  00A0               	movwf	??___ftpack
+  1397  0266  0820               	movf	??___ftpack,w
+  1398  0267  07F6               	addwf	___ftpack@exp,f
+  1399  0268  3001               	movlw	1
+  1400  0269                     u1055:	
+  1401  0269  36F5               	lsrf	___ftpack@arg+2,f
+  1402  026A  0CF4               	rrf	___ftpack@arg+1,f
+  1403  026B  0CF3               	rrf	___ftpack@arg,f
+  1404  026C  0B89               	decfsz	9,f
+  1405  026D  2A69               	goto	u1055
+  1406  026E                     l1127:	
+  1407  026E  30FE               	movlw	254
+  1408  026F  0575               	andwf	___ftpack@arg+2,w
+  1409  0270  1903               	btfsc	3,2
+  1410  0271  2A88               	goto	l370
+  1411  0272  2A63               	goto	l1125
+  1412  0273                     l1129:	
+  1413  0273  3001               	movlw	1
+  1414  0274  0020               	movlb	0	; select bank0
+  1415  0275  00A0               	movwf	??___ftpack
+  1416  0276  0820               	movf	??___ftpack,w
+  1417  0277  07F6               	addwf	___ftpack@exp,f
+  1418  0278  3001               	movlw	1
+  1419  0279  07F3               	addwf	___ftpack@arg,f
+  1420  027A  3000               	movlw	0
+  1421  027B  1803               	skipnc
+  1422  027C  3001               	movlw	1
+  1423  027D  07F4               	addwf	___ftpack@arg+1,f
+  1424  027E  3000               	movlw	0
+  1425  027F  1803               	skipnc
+  1426  0280  3001               	movlw	1
+  1427  0281  07F5               	addwf	___ftpack@arg+2,f
+  1428  0282  3001               	movlw	1
+  1429  0283                     u1075:	
+  1430  0283  36F5               	lsrf	___ftpack@arg+2,f
+  1431  0284  0CF4               	rrf	___ftpack@arg+1,f
+  1432  0285  0CF3               	rrf	___ftpack@arg,f
+  1433  0286  0B89               	decfsz	9,f
+  1434  0287  2A83               	goto	u1075
+  1435  0288                     l370:	
+  1436  0288  30FF               	movlw	255
+  1437  0289  0575               	andwf	___ftpack@arg+2,w
+  1438  028A  1903               	btfsc	3,2
+  1439  028B  2A95               	goto	l1137
+  1440  028C  2A73               	goto	l1129
+  1441  028D                     l1135:	
+  1442  028D  3001               	movlw	1
+  1443  028E  02F6               	subwf	___ftpack@exp,f
+  1444  028F  3001               	movlw	1
+  1445  0290                     u1095:	
+  1446  0290  35F3               	lslf	___ftpack@arg,f
+  1447  0291  0DF4               	rlf	___ftpack@arg+1,f
+  1448  0292  0DF5               	rlf	___ftpack@arg+2,f
+  1449  0293  0B89               	decfsz	9,f
+  1450  0294  2A90               	goto	u1095
+  1451  0295                     l1137:	
+  1452  0295  1BF4               	btfsc	___ftpack@arg+1,7
+  1453  0296  2A9B               	goto	l377
+  1454  0297  3002               	movlw	2
+  1455  0298  0276               	subwf	___ftpack@exp,w
+  1456  0299  1803               	skipnc
+  1457  029A  2A8D               	goto	l1135
+  1458  029B                     l377:	
+  1459  029B  1876               	btfsc	___ftpack@exp,0
+  1460  029C  2AA3               	goto	l378
+  1461  029D  30FF               	movlw	255
+  1462  029E  05F3               	andwf	___ftpack@arg,f
+  1463  029F  307F               	movlw	127
+  1464  02A0  05F4               	andwf	___ftpack@arg+1,f
+  1465  02A1  30FF               	movlw	255
+  1466  02A2  05F5               	andwf	___ftpack@arg+2,f
+  1467  02A3                     l378:	
+  1468  02A3  1003               	clrc
+  1469  02A4  0CF6               	rrf	___ftpack@exp,f
+  1470  02A5  0876               	movf	___ftpack@exp,w
+  1471  02A6  0020               	movlb	0	; select bank0
+  1472  02A7  00A0               	movwf	??___ftpack
+  1473  02A8  01A1               	clrf	??___ftpack+1
+  1474  02A9  01A2               	clrf	??___ftpack+2
+  1475  02AA  3010               	movlw	16
+  1476  02AB                     u1135:	
+  1477  02AB  35A0               	lslf	??___ftpack,f
+  1478  02AC  0DA1               	rlf	??___ftpack+1,f
+  1479  02AD  0DA2               	rlf	??___ftpack+2,f
+  1480  02AE  0B89               	decfsz	9,f
+  1481  02AF  2AAB               	goto	u1135
+  1482  02B0  0820               	movf	??___ftpack,w
+  1483  02B1  04F3               	iorwf	___ftpack@arg,f
+  1484  02B2  0821               	movf	??___ftpack+1,w
+  1485  02B3  04F4               	iorwf	___ftpack@arg+1,f
+  1486  02B4  0822               	movf	??___ftpack+2,w
+  1487  02B5  04F5               	iorwf	___ftpack@arg+2,f
+  1488  02B6  0877               	movf	___ftpack@sign,w
+  1489  02B7  1903               	btfsc	3,2
+  1490  02B8  0008               	return
+  1491  02B9  17F5               	bsf	___ftpack@arg+2,7
+  1492  02BA  0008               	return
+  1493  02BB                     __end_of___ftpack:	
+  1494                           
+  1495                           	psect	text6
+  1496  032F                     __ptext6:	
+  1497 ;; *************** function ___bmul *****************
+  1498 ;; Defined at:
+  1499 ;;		line 4 in file "C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul8.c"
+  1500 ;; Parameters:    Size  Location     Type
+  1501 ;;  multiplier      1    wreg     unsigned char 
+  1502 ;;  multiplicand    1    3[COMMON] unsigned char 
+  1503 ;; Auto vars:     Size  Location     Type
+  1504 ;;  multiplier      1    6[COMMON] unsigned char 
+  1505 ;;  product         1    5[COMMON] unsigned char 
+  1506 ;; Return value:  Size  Location     Type
+  1507 ;;                  1    wreg      unsigned char 
+  1508 ;; Registers used:
+  1509 ;;		wreg, status,2, status,0
+  1510 ;; Tracked objects:
+  1511 ;;		On entry : 0/0
+  1512 ;;		On exit  : 0/0
+  1513 ;;		Unchanged: 0/0
+  1514 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4
+  1515 ;;      Params:         1       0       0       0       0       0
+  1516 ;;      Locals:         2       0       0       0       0       0
+  1517 ;;      Temps:          1       0       0       0       0       0
+  1518 ;;      Totals:         4       0       0       0       0       0
+  1519 ;;Total ram usage:        4 bytes
+  1520 ;; Hardware stack levels used:    1
+  1521 ;; Hardware stack levels required when called:    1
+  1522 ;; This function calls:
+  1523 ;;		Nothing
+  1524 ;; This function is called by:
+  1525 ;;		_main
+  1526 ;; This function uses a non-reentrant model
+  1527 ;;
+  1528                           
+  1529                           
+  1530                           ;psect for function ___bmul
+  1531  032F                     ___bmul:	
+  1532                           
+  1533                           ;incstack = 0
+  1534                           ; Regs used in ___bmul: [wreg+status,2+status,0]
+  1535                           ;___bmul@multiplier stored from wreg
+  1536  032F  00F6               	movwf	___bmul@multiplier
+  1537  0330  01F5               	clrf	___bmul@product
+  1538  0331                     l933:	
+  1539  0331  1C76               	btfss	___bmul@multiplier,0
+  1540  0332  2B37               	goto	l937
+  1541  0333  0873               	movf	___bmul@multiplicand,w
+  1542  0334  00F4               	movwf	??___bmul
+  1543  0335  0874               	movf	??___bmul,w
+  1544  0336  07F5               	addwf	___bmul@product,f
+  1545  0337                     l937:	
+  1546  0337  1003               	clrc
+  1547  0338  0DF3               	rlf	___bmul@multiplicand,f
+  1548  0339  1003               	clrc
+  1549  033A  0CF6               	rrf	___bmul@multiplier,f
+  1550  033B  0876               	movf	___bmul@multiplier,w
+  1551  033C  1D03               	btfss	3,2
+  1552  033D  2B31               	goto	l933
+  1553  033E  0875               	movf	___bmul@product,w
+  1554  033F  0008               	return
+  1555  0340                     __end_of___bmul:	
+  1556                           
+  1557                           	psect	text7
+  1558  031A                     __ptext7:	
+  1559 ;; *************** function _InitI2C_Slave *****************
+  1560 ;; Defined at:
+  1561 ;;		line 101 in file "SpaceBallon_i2c_arduino.c"
+  1562 ;; Parameters:    Size  Location     Type
+  1563 ;;  address         2    3[COMMON] unsigned int 
+  1564 ;; Auto vars:     Size  Location     Type
+  1565 ;;		None
+  1566 ;; Return value:  Size  Location     Type
+  1567 ;;                  1    wreg      void 
+  1568 ;; Registers used:
+  1569 ;;		wreg, status,2, status,0
+  1570 ;; Tracked objects:
+  1571 ;;		On entry : 0/0
+  1572 ;;		On exit  : 0/0
+  1573 ;;		Unchanged: 0/0
+  1574 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4
+  1575 ;;      Params:         2       0       0       0       0       0
+  1576 ;;      Locals:         0       0       0       0       0       0
+  1577 ;;      Temps:          0       0       0       0       0       0
+  1578 ;;      Totals:         2       0       0       0       0       0
+  1579 ;;Total ram usage:        2 bytes
+  1580 ;; Hardware stack levels used:    1
+  1581 ;; Hardware stack levels required when called:    1
+  1582 ;; This function calls:
+  1583 ;;		Nothing
+  1584 ;; This function is called by:
+  1585 ;;		_main
+  1586 ;; This function uses a non-reentrant model
+  1587 ;;
+  1588                           
+  1589                           
+  1590                           ;psect for function _InitI2C_Slave
+  1591  031A                     _InitI2C_Slave:	
+  1592                           
+  1593                           ;SpaceBallon_i2c_arduino.c: 102: SSP1STAT= 0b10000000 ;
+  1594                           
+  1595                           ;incstack = 0
+  1596                           ; Regs used in _InitI2C_Slave: [wreg+status,2+status,0]
+  1597  031A  3080               	movlw	128
+  1598  031B  0024               	movlb	4	; select bank4
+  1599  031C  0094               	movwf	20	;volatile
+  1600                           
+  1601                           ;SpaceBallon_i2c_arduino.c: 103: SSP1CON1= 0b00100110 ;
+  1602  031D  3026               	movlw	38
+  1603  031E  0095               	movwf	21	;volatile
+  1604                           
+  1605                           ;SpaceBallon_i2c_arduino.c: 104: SSP1CON2bits.SEN = 1;
+  1606  031F  1416               	bsf	22,0	;volatile
+  1607                           
+  1608                           ;SpaceBallon_i2c_arduino.c: 106: SSP1ADD = address<<1 ;
+  1609  0320  3573               	lslf	InitI2C_Slave@address,w
+  1610  0321  0092               	movwf	18	;volatile
+  1611                           
+  1612                           ;SpaceBallon_i2c_arduino.c: 107: SSP1MSK = 0b11111110 ;
+  1613  0322  30FE               	movlw	254
+  1614  0323  0093               	movwf	19	;volatile
+  1615                           
+  1616                           ;SpaceBallon_i2c_arduino.c: 108: SSP1IE = 1 ;
+  1617  0324  0021               	movlb	1	; select bank1
+  1618  0325  1591               	bsf	17,3	;volatile
+  1619                           
+  1620                           ;SpaceBallon_i2c_arduino.c: 109: BCL1IE = 1 ;
+  1621  0326  1592               	bsf	18,3	;volatile
+  1622                           
+  1623                           ;SpaceBallon_i2c_arduino.c: 110: PEIE = 1 ;
+  1624  0327  170B               	bsf	11,6	;volatile
+  1625                           
+  1626                           ;SpaceBallon_i2c_arduino.c: 111: GIE = 1 ;
+  1627  0328  178B               	bsf	11,7	;volatile
+  1628                           
+  1629                           ;SpaceBallon_i2c_arduino.c: 112: SSP1IF = 0 ;
+  1630  0329  0020               	movlb	0	; select bank0
+  1631  032A  1191               	bcf	17,3	;volatile
+  1632                           
+  1633                           ;SpaceBallon_i2c_arduino.c: 113: BCL1IF = 0 ;
+  1634  032B  1192               	bcf	18,3	;volatile
+  1635                           
+  1636                           ;SpaceBallon_i2c_arduino.c: 114: rcv_flg = 0;
+  1637  032C  01C9               	clrf	_rcv_flg
+  1638  032D  01CA               	clrf	_rcv_flg+1
+  1639  032E  0008               	return
+  1640  032F                     __end_of_InitI2C_Slave:	
+  1641                           
+  1642                           	psect	text8
+  1643  02EE                     __ptext8:	
+  1644 ;; *************** function _I2C_ReceiveCheck *****************
+  1645 ;; Defined at:
+  1646 ;;		line 160 in file "SpaceBallon_i2c_arduino.c"
+  1647 ;; Parameters:    Size  Location     Type
+  1648 ;;		None
+  1649 ;; Auto vars:     Size  Location     Type
+  1650 ;;  ans             2    5[COMMON] int 
+  1651 ;; Return value:  Size  Location     Type
+  1652 ;;                  2    3[COMMON] int 
+  1653 ;; Registers used:
+  1654 ;;		wreg, status,2, status,0
+  1655 ;; Tracked objects:
+  1656 ;;		On entry : 0/0
+  1657 ;;		On exit  : 0/0
+  1658 ;;		Unchanged: 0/0
+  1659 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4
+  1660 ;;      Params:         2       0       0       0       0       0
+  1661 ;;      Locals:         2       0       0       0       0       0
+  1662 ;;      Temps:          0       0       0       0       0       0
+  1663 ;;      Totals:         4       0       0       0       0       0
+  1664 ;;Total ram usage:        4 bytes
+  1665 ;; Hardware stack levels used:    1
+  1666 ;; Hardware stack levels required when called:    1
+  1667 ;; This function calls:
+  1668 ;;		Nothing
+  1669 ;; This function is called by:
+  1670 ;;		_main
+  1671 ;; This function uses a non-reentrant model
+  1672 ;;
+  1673                           
+  1674                           
+  1675                           ;psect for function _I2C_ReceiveCheck
+  1676  02EE                     _I2C_ReceiveCheck:	
+  1677                           
+  1678                           ;SpaceBallon_i2c_arduino.c: 161: int ans ;
+  1679                           ;SpaceBallon_i2c_arduino.c: 162: ans = 0 ;
+  1680                           
+  1681                           ;incstack = 0
+  1682                           ; Regs used in _I2C_ReceiveCheck: [wreg+status,2+status,0]
+  1683  02EE  01F5               	clrf	I2C_ReceiveCheck@ans
+  1684  02EF  01F6               	clrf	I2C_ReceiveCheck@ans+1
+  1685                           
+  1686                           ;SpaceBallon_i2c_arduino.c: 163: if (rcv_flg != 0) {
+  1687  02F0  0020               	movlb	0	; select bank0
+  1688  02F1  0849               	movf	_rcv_flg,w
+  1689  02F2  044A               	iorwf	_rcv_flg+1,w
+  1690  02F3  1903               	btfsc	3,2
+  1691  02F4  2B00               	goto	l917
+  1692                           
+  1693                           ;SpaceBallon_i2c_arduino.c: 164: if ((SSP1STATbits.S==0)&&(SSP1STATbits.P==1)) {
+  1694  02F5  0024               	movlb	4	; select bank4
+  1695  02F6  1D94               	btfss	20,3	;volatile
+  1696  02F7  1E14               	btfss	20,4	;volatile
+  1697  02F8  2B00               	goto	l917
+  1698                           
+  1699                           ;SpaceBallon_i2c_arduino.c: 165: ans = rcv_flg ;
+  1700  02F9  0020               	movlb	0	; select bank0
+  1701  02FA  084A               	movf	_rcv_flg+1,w
+  1702  02FB  00F6               	movwf	I2C_ReceiveCheck@ans+1
+  1703  02FC  0849               	movf	_rcv_flg,w
+  1704  02FD  00F5               	movwf	I2C_ReceiveCheck@ans
+  1705                           
+  1706                           ;SpaceBallon_i2c_arduino.c: 166: rcv_flg = 0 ;
+  1707  02FE  01C9               	clrf	_rcv_flg
+  1708  02FF  01CA               	clrf	_rcv_flg+1
+  1709  0300                     l917:	
+  1710                           
+  1711                           ;SpaceBallon_i2c_arduino.c: 167: }
+  1712                           ;SpaceBallon_i2c_arduino.c: 168: }
+  1713                           ;SpaceBallon_i2c_arduino.c: 169: return(ans) ;
+  1714  0300  0876               	movf	I2C_ReceiveCheck@ans+1,w
+  1715  0301  00F4               	movwf	?_I2C_ReceiveCheck+1
+  1716  0302  0875               	movf	I2C_ReceiveCheck@ans,w
+  1717  0303  00F3               	movwf	?_I2C_ReceiveCheck
+  1718  0304  0008               	return
+  1719  0305                     __end_of_I2C_ReceiveCheck:	
+  1720                           
+  1721                           	psect	intentry
+  1722  0004                     __pintentry:	
+  1723 ;; *************** function _InterI2C *****************
+  1724 ;; Defined at:
+  1725 ;;		line 117 in file "SpaceBallon_i2c_arduino.c"
+  1726 ;; Parameters:    Size  Location     Type
+  1727 ;;		None
+  1728 ;; Auto vars:     Size  Location     Type
+  1729 ;;  x               1    2[COMMON] unsigned char 
+  1730 ;; Return value:  Size  Location     Type
+  1731 ;;                  1    wreg      void 
+  1732 ;; Registers used:
+  1733 ;;		wreg, fsr1l, fsr1h, status,2, status,0
+  1734 ;; Tracked objects:
+  1735 ;;		On entry : 0/0
+  1736 ;;		On exit  : 0/0
+  1737 ;;		Unchanged: 0/0
+  1738 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4
+  1739 ;;      Params:         0       0       0       0       0       0
+  1740 ;;      Locals:         1       0       0       0       0       0
+  1741 ;;      Temps:          2       0       0       0       0       0
+  1742 ;;      Totals:         3       0       0       0       0       0
+  1743 ;;Total ram usage:        3 bytes
+  1744 ;; Hardware stack levels used:    1
+  1745 ;; This function calls:
+  1746 ;;		Nothing
+  1747 ;; This function is called by:
+  1748 ;;		Interrupt level 1
+  1749 ;; This function uses a non-reentrant model
+  1750 ;;
+  1751                           
+  1752  0004                     _InterI2C:	
+  1753                           
+  1754                           ;incstack = 0
+  1755  0004  147E               	bsf	126,0	;set compiler interrupt flag (level 1)
+  1756                           
+  1757                           ; Regs used in _InterI2C: [wreg+fsr1l+fsr1h+status,2+status,0]
+  1758  0005  3180               	pagesel	$
+  1759  0006  0020               	movlb	0	; select bank0
+  1760  0007  087F               	movf	127,w
+  1761  0008  00F1               	movwf	??_InterI2C+1
+  1762                           
+  1763                           ;SpaceBallon_i2c_arduino.c: 118: char x ;
+  1764                           ;SpaceBallon_i2c_arduino.c: 120: if (SSP1IF == 1) {
+  1765  0009  1D91               	btfss	17,3	;volatile
+  1766  000A  285B               	goto	i1l98
+  1767                           
+  1768                           ;SpaceBallon_i2c_arduino.c: 121: if (SSP1STATbits.R_nW == 0) {
+  1769  000B  0024               	movlb	4	; select bank4
+  1770  000C  1914               	btfsc	20,2	;volatile
+  1771  000D  282E               	goto	i1l99
+  1772                           
+  1773                           ;SpaceBallon_i2c_arduino.c: 122: if (SSP1STATbits.D_nA == 0) {
+  1774  000E  1A94               	btfsc	20,5	;volatile
+  1775  000F  281C               	goto	i1l1081
+  1776                           
+  1777                           ;SpaceBallon_i2c_arduino.c: 123: Rdtp = (char *)rcv_data ;
+  1778  0010  3053               	movlw	(low (_rcv_data| 0))& (0+255)
+  1779  0011  00F0               	movwf	??_InterI2C
+  1780  0012  0870               	movf	??_InterI2C,w
+  1781  0013  00F9               	movwf	_Rdtp
+  1782                           
+  1783                           ;SpaceBallon_i2c_arduino.c: 124: x = SSP1BUF ;
+  1784  0014  0811               	movf	17,w	;volatile
+  1785  0015  00F0               	movwf	??_InterI2C
+  1786  0016  0870               	movf	??_InterI2C,w
+  1787  0017  00F2               	movwf	InterI2C@x
+  1788                           
+  1789                           ;SpaceBallon_i2c_arduino.c: 125: rcv_flg = 0 ;
+  1790  0018  0020               	movlb	0	; select bank0
+  1791  0019  01C9               	clrf	_rcv_flg
+  1792  001A  01CA               	clrf	_rcv_flg+1
+  1793                           
+  1794                           ;SpaceBallon_i2c_arduino.c: 126: } else {
+  1795  001B  2855               	goto	L2
+  1796  001C                     i1l1081:	
+  1797                           
+  1798                           ;SpaceBallon_i2c_arduino.c: 127: *Rdtp = SSP1BUF ;
+  1799  001C  0024               	movlb	4	; select bank4
+  1800  001D  0811               	movf	17,w	;volatile
+  1801  001E  00F0               	movwf	??_InterI2C
+  1802  001F  0879               	movf	_Rdtp,w
+  1803  0020  0086               	movwf	6
+  1804  0021  0187               	clrf	7
+  1805  0022  0870               	movf	??_InterI2C,w
+  1806  0023  0081               	movwf	1
+  1807                           
+  1808                           ;SpaceBallon_i2c_arduino.c: 128: Rdtp++ ;
+  1809  0024  3001               	movlw	1
+  1810  0025  00F0               	movwf	??_InterI2C
+  1811  0026  0870               	movf	??_InterI2C,w
+  1812  0027  07F9               	addwf	_Rdtp,f
+  1813                           
+  1814                           ;SpaceBallon_i2c_arduino.c: 129: rcv_flg++ ;
+  1815  0028  3001               	movlw	1
+  1816  0029  0020               	movlb	0	; select bank0
+  1817  002A  07C9               	addwf	_rcv_flg,f
+  1818  002B  3000               	movlw	0
+  1819  002C  3DCA               	addwfc	_rcv_flg+1,f
+  1820  002D  2855               	goto	L2
+  1821  002E                     i1l99:	
+  1822                           ;SpaceBallon_i2c_arduino.c: 133: } else {
+  1823                           
+  1824                           ;SpaceBallon_i2c_arduino.c: 132: SSP1CON1bits.CKP = 1 ;
+  1825                           
+  1826                           ;SpaceBallon_i2c_arduino.c: 130: }
+  1827                           ;SpaceBallon_i2c_arduino.c: 131: SSP1IF = 0 ;
+  1828                           
+  1829                           
+  1830                           ;SpaceBallon_i2c_arduino.c: 134: if (SSP1STATbits.BF == 1) {
+  1831  002E  1C14               	btfss	20,0	;volatile
+  1832  002F  2841               	goto	i1l103
+  1833                           
+  1834                           ;SpaceBallon_i2c_arduino.c: 135: Sdtp = (char *)snd_data ;
+  1835  0030  304B               	movlw	(low (_snd_data| 0))& (0+255)
+  1836  0031  00F0               	movwf	??_InterI2C
+  1837  0032  0870               	movf	??_InterI2C,w
+  1838  0033  00FA               	movwf	_Sdtp
+  1839                           
+  1840                           ;SpaceBallon_i2c_arduino.c: 136: x = SSP1BUF ;
+  1841  0034  0811               	movf	17,w	;volatile
+  1842  0035  00F0               	movwf	??_InterI2C
+  1843  0036  0870               	movf	??_InterI2C,w
+  1844  0037  00F2               	movwf	InterI2C@x
+  1845  0038                     i1l1093:	
+  1846                           ;SpaceBallon_i2c_arduino.c: 137: while((SSP1CON1bits.CKP)|(SSP1STATbits.BF)) ;
+  1847                           
+  1848  0038  0814               	movf	20,w	;volatile
+  1849  0039  3901               	andlw	1
+  1850  003A  00F0               	movwf	??_InterI2C
+  1851  003B  0E15               	swapf	21,w	;volatile
+  1852  003C  3901               	andlw	1
+  1853  003D  0470               	iorwf	??_InterI2C,w
+  1854  003E  1D03               	btfss	3,2
+  1855  003F  2838               	goto	i1l1093
+  1856  0040  284B               	goto	i1l1107
+  1857  0041                     i1l103:	
+  1858                           ;SpaceBallon_i2c_arduino.c: 142: } else {
+  1859                           
+  1860                           ;SpaceBallon_i2c_arduino.c: 141: SSP1CON1bits.CKP = 1 ;
+  1861                           
+  1862                           ;SpaceBallon_i2c_arduino.c: 140: SSP1IF = 0 ;
+  1863                           
+  1864                           ;SpaceBallon_i2c_arduino.c: 139: Sdtp++ ;
+  1865                           
+  1866                           ;SpaceBallon_i2c_arduino.c: 138: SSP1BUF = *Sdtp ;
+  1867                           
+  1868                           
+  1869                           ;SpaceBallon_i2c_arduino.c: 143: if (SSP1CON2bits.ACKSTAT==0) {
+  1870  0041  1B16               	btfsc	22,6	;volatile
+  1871  0042  2859               	goto	i1l108
+  1872  0043                     i1l1105:	
+  1873                           ;SpaceBallon_i2c_arduino.c: 144: while((SSP1CON1bits.CKP)|(SSP1STATbits.BF)) ;
+  1874                           
+  1875  0043  0814               	movf	20,w	;volatile
+  1876  0044  3901               	andlw	1
+  1877  0045  00F0               	movwf	??_InterI2C
+  1878  0046  0E15               	swapf	21,w	;volatile
+  1879  0047  3901               	andlw	1
+  1880  0048  0470               	iorwf	??_InterI2C,w
+  1881  0049  1D03               	btfss	3,2
+  1882  004A  2843               	goto	i1l1105
+  1883  004B                     i1l1107:	
+  1884                           
+  1885                           ;SpaceBallon_i2c_arduino.c: 145: SSP1BUF = *Sdtp ;
+  1886  004B  087A               	movf	_Sdtp,w
+  1887  004C  0086               	movwf	6
+  1888  004D  0187               	clrf	7
+  1889  004E  0801               	movf	1,w
+  1890  004F  0091               	movwf	17	;volatile
+  1891                           
+  1892                           ;SpaceBallon_i2c_arduino.c: 146: Sdtp++ ;
+  1893  0050  3001               	movlw	1
+  1894  0051  00F0               	movwf	??_InterI2C
+  1895  0052  0870               	movf	??_InterI2C,w
+  1896  0053  07FA               	addwf	_Sdtp,f
+  1897                           
+  1898                           ;SpaceBallon_i2c_arduino.c: 147: SSP1IF = 0 ;
+  1899  0054  0020               	movlb	0	; select bank0
+  1900  0055                     L2:	
+  1901  0055  1191               	bcf	17,3	;volatile
+  1902                           
+  1903                           ;SpaceBallon_i2c_arduino.c: 148: SSP1CON1bits.CKP = 1 ;
+  1904  0056  0024               	movlb	4	; select bank4
+  1905  0057  1615               	bsf	21,4	;volatile
+  1906                           
+  1907                           ;SpaceBallon_i2c_arduino.c: 149: } else {
+  1908  0058  285B               	goto	i1l98
+  1909  0059                     i1l108:	
+  1910                           
+  1911                           ;SpaceBallon_i2c_arduino.c: 150: SSP1IF = 0 ;
+  1912  0059  0020               	movlb	0	; select bank0
+  1913  005A  1191               	bcf	17,3	;volatile
+  1914  005B                     i1l98:	
+  1915                           
+  1916                           ;SpaceBallon_i2c_arduino.c: 151: }
+  1917                           ;SpaceBallon_i2c_arduino.c: 152: }
+  1918                           ;SpaceBallon_i2c_arduino.c: 153: }
+  1919                           ;SpaceBallon_i2c_arduino.c: 154: }
+  1920                           ;SpaceBallon_i2c_arduino.c: 155: if (BCL1IF == 1) {
+  1921  005B  0020               	movlb	0	; select bank0
+  1922  005C  1992               	btfsc	18,3	;volatile
+  1923                           
+  1924                           ;SpaceBallon_i2c_arduino.c: 156: BCL1IF = 0 ;
+  1925  005D  1192               	bcf	18,3	;volatile
+  1926  005E  0871               	movf	??_InterI2C+1,w
+  1927  005F  00FF               	movwf	127
+  1928  0060  107E               	bcf	126,0	;clear compiler interrupt flag (level 1)
+  1929  0061  0009               	retfie
+  1930  0062                     __end_of_InterI2C:	
+  1931  007E                     btemp	set	126	;btemp
+  1932  007E                     int$flags	set	126
+  1933  007E                     wtemp0	set	126
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         20
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      9      11
+    BANK0            80     41      59
+    BANK1            80      0       0
+    BANK2            80      0       0
+    BANK3            80      0       0
+    BANK4            48      0       0
+
+Pointer List with Targets:
+
+    Sdtp	PTR unsigned char  size(1) Largest target is 8
+		 -> NULL(NULL[0]), snd_data(BANK0[8]), 
+
+    Rdtp	PTR unsigned char  size(1) Largest target is 8
+		 -> NULL(NULL[0]), rcv_data(BANK0[8]), 
+
+
+Critical Paths under _main in COMMON
+
+    _main->___lwtoft
+    ___lwtoft->___ftpack
+    ___ftdiv->___lwtoft
+
+Critical Paths under _InterI2C in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _main->___ftdiv
+    ___lwtoft->_adconv
+    ___ftdiv->___lwtoft
+
+Critical Paths under _InterI2C in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _InterI2C in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _InterI2C in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _InterI2C in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _InterI2C in BANK4
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                16    12      4    5528
+                                             25 BANK0     16    12      4
+                   _I2C_ReceiveCheck
+                      _InitI2C_Slave
+                             ___bmul
+                            ___ftdiv
+                            ___fttol
+                           ___lwtoft
+                             _adconv
+ ---------------------------------------------------------------------------------
+ (1) _adconv                                              10     8      2     164
+                                              3 COMMON     4     2      2
+                                              0 BANK0      6     6      0
+ ---------------------------------------------------------------------------------
+ (1) ___lwtoft                                             4     1      3    2044
+                                              8 COMMON     1     1      0
+                                              6 BANK0      3     0      3
+                           ___ftpack
+                             _adconv (ARG)
+ ---------------------------------------------------------------------------------
+ (1) ___fttol                                             14    10      4     436
+                                              3 COMMON     4     0      4
+                                              0 BANK0     10    10      0
+ ---------------------------------------------------------------------------------
+ (1) ___ftdiv                                             16    10      6    2498
+                                              9 BANK0     16    10      6
+                           ___ftpack
+                           ___lwtoft (ARG)
+                             _adconv (ARG)
+ ---------------------------------------------------------------------------------
+ (2) ___ftpack                                             8     3      5    1948
+                                              3 COMMON     5     0      5
+                                              0 BANK0      3     3      0
+ ---------------------------------------------------------------------------------
+ (1) ___bmul                                               4     3      1     145
+                                              3 COMMON     4     3      1
+ ---------------------------------------------------------------------------------
+ (1) _InitI2C_Slave                                        2     0      2      75
+                                              3 COMMON     2     0      2
+ ---------------------------------------------------------------------------------
+ (1) _I2C_ReceiveCheck                                     4     2      2      24
+                                              3 COMMON     4     2      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (3) _InterI2C                                             3     3      0       2
+                                              0 COMMON     3     3      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _I2C_ReceiveCheck
+   _InitI2C_Slave
+   ___bmul
+   ___ftdiv
+     ___ftpack
+     ___lwtoft (ARG)
+       ___ftpack
+       _adconv (ARG)
+     _adconv (ARG)
+   ___fttol
+   ___lwtoft
+     ___ftpack
+     _adconv (ARG)
+   _adconv
+
+ _InterI2C (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             170      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITCOMMON            E      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               E      9       B       2       78.6%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR2              0      0       0       3        0.0%
+SFR2                 0      0       0       3        0.0%
+STACK                0      0       0       3        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+ABS                  0      0      46       4        0.0%
+BITBANK0            50      0       0       5        0.0%
+BITSFR4              0      0       0       5        0.0%
+SFR4                 0      0       0       5        0.0%
+BANK0               50     29      3B       6       73.8%
+BITSFR5              0      0       0       6        0.0%
+SFR5                 0      0       0       6        0.0%
+BITBANK1            50      0       0       7        0.0%
+BITSFR6              0      0       0       7        0.0%
+SFR6                 0      0       0       7        0.0%
+BANK1               50      0       0       8        0.0%
+BITSFR7              0      0       0       8        0.0%
+SFR7                 0      0       0       8        0.0%
+BITBANK2            50      0       0       9        0.0%
+BITSFR8              0      0       0       9        0.0%
+SFR8                 0      0       0       9        0.0%
+BANK2               50      0       0      10        0.0%
+BITSFR9              0      0       0      10        0.0%
+SFR9                 0      0       0      10        0.0%
+BITBANK3            50      0       0      11        0.0%
+BITSFR10             0      0       0      11        0.0%
+SFR10                0      0       0      11        0.0%
+BANK3               50      0       0      12        0.0%
+BITSFR11             0      0       0      12        0.0%
+SFR11                0      0       0      12        0.0%
+BITBANK4            30      0       0      13        0.0%
+BITSFR12             0      0       0      13        0.0%
+SFR12                0      0       0      13        0.0%
+BANK4               30      0       0      14        0.0%
+BITSFR13             0      0       0      14        0.0%
+SFR13                0      0       0      14        0.0%
+BITSFR14             0      0       0      15        0.0%
+SFR14                0      0       0      15        0.0%
+DATA                 0      0      46      15        0.0%
+BITSFR15             0      0       0      16        0.0%
+SFR15                0      0       0      16        0.0%
+BITSFR16             0      0       0      17        0.0%
+SFR16                0      0       0      17        0.0%
+BITSFR17             0      0       0      18        0.0%
+SFR17                0      0       0      18        0.0%
+BITSFR18             0      0       0      19        0.0%
+SFR18                0      0       0      19        0.0%
+BITSFR19             0      0       0      20        0.0%
+SFR19                0      0       0      20        0.0%
+BITSFR20             0      0       0      21        0.0%
+SFR20                0      0       0      21        0.0%
+BITSFR21             0      0       0      22        0.0%
+SFR21                0      0       0      22        0.0%
+BITSFR22             0      0       0      23        0.0%
+SFR22                0      0       0      23        0.0%
+BITSFR23             0      0       0      24        0.0%
+SFR23                0      0       0      24        0.0%
+BITSFR24             0      0       0      25        0.0%
+SFR24                0      0       0      25        0.0%
+BITSFR25             0      0       0      26        0.0%
+SFR25                0      0       0      26        0.0%
+BITSFR26             0      0       0      27        0.0%
+SFR26                0      0       0      27        0.0%
+BITSFR27             0      0       0      28        0.0%
+SFR27                0      0       0      28        0.0%
+BITSFR28             0      0       0      29        0.0%
+SFR28                0      0       0      29        0.0%
+BITSFR29             0      0       0      30        0.0%
+SFR29                0      0       0      30        0.0%
+BITSFR30             0      0       0      31        0.0%
+SFR30                0      0       0      31        0.0%
+BITSFR31             0      0       0      32        0.0%
+SFR31                0      0       0      32        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.45 build -152302408 
+Symbol Table                                                                                   Mon Dec 17 22:48:39 2018
+
+           ___bmul@product 0075                __CFG_CP$OFF 0000                         l79 009F  
+                      l122 02CD                        l370 0288                        l461 023A  
+                      l377 029B                        l378 02A3                        l917 0300  
+                      l933 0331                        l937 0337                        _GIE 005F  
+                      _RB2 006A                        _RB3 006B               __CFG_CPD$OFF 0000  
+             __CFG_BORV$HI 0000                        wreg 0009               __CFG_LVP$OFF 0000  
+             ___ftdiv@cntr 0033               ___ftdiv@sign 0038                       l1121 025C  
+                     l1125 0263                       l1135 028D                       l1127 026E  
+                     l1207 01E6                       l1137 0295                       l1129 0273  
+                     l1233 0231                       l1225 0216                       l1171 0151  
+                     l1235 023D                       l1227 0224                       l1165 013B  
+                     l1239 024B                       l1271 00C7                       l1193 01AB  
+                     l1185 0192                       l1275 00FF                       l1267 00B6  
+                     l1279 0116                       u1205 0173                       u1135 02AB  
+                     u1055 0269                       u1215 0193                       u1225 01A2  
+                     u1075 0283                       u1235 01AC                       u1155 02BF  
+                     u1325 0232                       u1095 0290                       u1265 01ED  
+                     u1417 0093                       u1195 0163                       u1427 011E  
+                     u1437 02C8                       u1295 0217                       u1385 00BE  
+                     _PEIE 005E                       i1l98 005B                       i1l99 002E  
+             __CFG_WRT$OFF 0000                       _Rdtp 0079                       _Sdtp 007A  
+                     _main 0071               ___ftpack@arg 0073               ___ftpack@exp 0076  
+                     fsr0h 0005                       fsr1h 0007                       indf0 0000  
+                     fsr0l 0004                       indf1 0001                       fsr1l 0006  
+                     btemp 007E              __CFG_BOREN$ON 0000                       start 0062  
+            __CFG_IESO$OFF 0000            ??_InitI2C_Slave 0075          ___bmul@multiplier 0076  
+             ___fttol@exp1 0029               ___fttol@lval 0025                      ?_main 0039  
+            __CFG_WDTE$OFF 0000            __end_of___ftdiv 01CD            __end_of___fttol 0254  
+                    i1l103 0041                      i1l108 0059                      _PORTA 000C  
+                    _PORTB 000D                      _TRISA 008C                      _TRISB 008D  
+            __CFG_PWRTE$ON 0000             __CFG_FCMEN$OFF 0000              ___ftpack@sign 0077  
+                    status 0003                      wtemp0 007E             __CFG_MCLRE$OFF 0000  
+          __initialization 0064               __end_of_main 0124           __end_of_InterI2C 0062  
+                   ??_main 003D              ___fttol@sign1 0024             __CFG_PLLEN$OFF 0000  
+                   _BCL1IE 0493                     _BCL1IF 0093                     _ADCON0 009D  
+                   _ADCON1 009E                     _ADRESH 009C                     _ADRESL 009B  
+                   _ANSELA 018C                     _ANSELB 018D           __end_of___ftpack 02BB  
+                   i1l1105 0043                     i1l1107 004B                     i1l1081 001C  
+                   i1l1093 0038           __end_of___lwtoft 031A                     _OSCCON 0099  
+                   _SSP1IE 048B                     _SSP1IF 008B                     ___bmul 032F  
+                   _adconv 02BB             __CFG_STVREN$ON 0000                  ??___ftdiv 002F  
+                ??___fttol 0020          ?_I2C_ReceiveCheck 0073         ??_I2C_ReceiveCheck 0075  
+  __end_of__initialization 006D                 ___ftdiv@f1 002C                 ___ftdiv@f2 0029  
+               ___ftdiv@f3 0034        ___bmul@multiplicand 0073                 ___fttol@f1 0073  
+           __pcstackCOMMON 0070                 ___lwtoft@c 0026                 __pbssBANK0 0049  
+                ?_InterI2C 0070                 __pmaintext 0071                    ?___bmul 0073  
+                  ?_adconv 0073                 __pintentry 0004                  ?___ftpack 0073  
+                ?___lwtoft 0026                 adconv@temp 0075                    _SSP1ADD 0212  
+                  _SSP1BUF 0211                    _SSP1MSK 0213                 ??_InterI2C 0070  
+          __size_of___bmul 0011      __end_of_InitI2C_Slave 032F                    ___ftdiv 0124  
+          __size_of_adconv 0033                    ___fttol 01CD                 ??___ftpack 0020  
+                  __ptext1 02BB                    __ptext2 0305                    __ptext3 01CD  
+                  __ptext4 0124                    __ptext5 0254                    __ptext6 032F  
+                  __ptext7 031A                    __ptext8 02EE                    adconv@i 0073  
+               ??___lwtoft 0078                    _rcv_flg 0049                    main@ans 0043  
+                  clrloop0 0341       end_of_initialization 006D           __CFG_FOSC$INTOSC 0000  
+__size_of_I2C_ReceiveCheck 0017                 main@analog 0040                ___ftdiv@exp 0037  
+                InterI2C@x 0072             __end_of___bmul 0340             __end_of_adconv 02EE  
+      start_initialization 0064        I2C_ReceiveCheck@ans 0075          __size_of_InterI2C 005E  
+                 ??___bmul 0074                   ??_adconv 0020          __size_of___ftpack 0067  
+              __pbssCOMMON 0079                  ___latbits 0001          __size_of___lwtoft 0015  
+            __pcstackBANK0 0020                   ?___ftdiv 0029                   ?___fttol 0073  
+         _I2C_ReceiveCheck 02EE                  clear_ram0 0340                   _GO_nDONE 04E9  
+                 _SSP1CON1 0215                   _SSP1STAT 0214                  main@porta 0045  
+                main@portb 0047     __size_of_InitI2C_Slave 0015                   _InterI2C 0004  
+         __size_of___ftdiv 00A9           __size_of___fttol 0087                   ___ftpack 0254  
+                 ___lwtoft 0305               _SSP1CON1bits 0215               _SSP1CON2bits 0216  
+            __size_of_main 00B3                   _rcv_data 0053                   _snd_data 004B  
+                 int$flags 007E              _InitI2C_Slave 031A                   main@argc 0039  
+                 main@argv 003B               _SSP1STATbits 0214                   intlevel1 0000  
+        __CFG_CLKOUTEN$OFF 0000             ?_InitI2C_Slave 0073   __end_of_I2C_ReceiveCheck 0305  
+     InitI2C_Slave@address 0073  
